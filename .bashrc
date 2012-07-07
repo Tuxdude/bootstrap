@@ -19,6 +19,7 @@ settitle () {
     fi
 }
 
+# Override make as neccessary, not everyone is happy with make > 3.81
 make() {
     if [ "$OVERRIDE_ANDROID_MAKE" == "1" ]; then
         _override_android_make $@
@@ -27,6 +28,11 @@ make() {
     else
         /usr/bin/make $@
     fi
+}
+
+# Sort du's output by size
+duf() {
+    du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
 }
 
 # Custom prompt
