@@ -19,5 +19,6 @@ test -z "$PROFILEREAD" && . /etc/profile || true
 #export LANG=es_ES.UTF-8	# uncomment this line for Spanish output
 #export LANG=en_US
 
-export JAVA_HOME=/usr/lib64/jvm/java-1.6.0-sun-1.6.0
-export PATH=$JAVA_HOME/bin:$PATH:/sbin
+export JAVA_HOME="/usr/lib64/jvm/java-1.6.0-sun-1.6.0"
+export PATH="$HOME/.local/bin:$JAVA_HOME/bin:$PATH:/sbin"
+export PYTHONPATH="$HOME/.local/lib/python2.7/site-packages:$PYTHONPATH"
