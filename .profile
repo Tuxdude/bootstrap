@@ -21,4 +21,3 @@ test -z "$PROFILEREAD" && . /etc/profile || true
 
 export JAVA_HOME="/usr/lib64/jvm/java-1.6.0-sun-1.6.0"
 export PATH="$HOME/.local/bin:$JAVA_HOME/bin:$PATH:/sbin"
-export PYTHONPATH="$HOME/.local/lib/python2.7/site-packages:$PYTHONPATH"
