@@ -71,6 +71,8 @@ if has("gui_running")
     if (match(hostname(), 'WingSaber') >= 0)
         set lines=40 columns=120
         winpos 200 100
+    else
+        set columns=100
     endif
     colorscheme DesertSaber
 endif
