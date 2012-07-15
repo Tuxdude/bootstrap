@@ -14,15 +14,17 @@
     dump            = "cat-file -p"
     empty-tree-sha1 = "hash-object -t tree /dev/null"
     whois           = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
-    whatis          = "show -s --pretty=tformat:\"%C(red)%h %C(magenta)%ad %Cblue%an%Cgreen%d %Creset%n%C(cyan)%s%Creset%n%n%n%b\""
+    whatis          = "show --stat --pretty=tformat:\"%C(red)%h %C(magenta)%ad %C(blue)%an %C(green)%d %C(reset)%n%C(yellow)%s%C(reset)%n%n%C(cyan)%b%C(reset)\""
+    stat            = "show --stat --pretty=tformat:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an %C(bold green)%d %C(reset)%s\""
+
     edit-unmerged   = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
     add-unmerged    = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 
-    tree            = "forest --pretty=format:\"%C(red)%h %C(magenta)(%ar) %Cblue%an %Creset%s\" --style=15 --reverse"
-    lgf             = "forest --pretty=format:\"%C(red)%h %C(magenta)(%ar) %Cblue%an %Creset%s\" --style=15"
-    lg              = "log --graph --decorate --abbrev-commit --pretty=tformat:\"%C(red)%h %C(magenta)(%ar) %Cblue%an%Cgreen%d %Creset%s\""
+    tree            = "forest --pretty=format:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an %C(reset)%s\" --style=15 --reverse"
+    lgf             = "forest --pretty=format:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an %C(reset)%s\" --style=15"
+    lg              = "log --graph --decorate --abbrev-commit --pretty=tformat:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an%C(green)%d %C(reset)%s\""
     lc              = "log origin/HEAD --stat --no-merges"
-    abbr            = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=tformat:\"%C(red)%h %C(magenta)%ad %Cblue%an%Cgreen%d %Creset%s\" $commit; done' -"
+    abbr            = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=tformat:\"%C(red)%h %C(magenta)%ad %C(blue)%an%C(green)%d %C(reset)%s\" $commit; done' -"
     graphviz        = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
 
 [include]
