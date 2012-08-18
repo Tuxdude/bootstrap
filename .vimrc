@@ -72,7 +72,7 @@ if has("gui_running")
         set lines=40 columns=120
         winpos 200 100
     elseif (match(hostname(), 'StarScream') >= 0)
-        "set gfn=DejaVu\ Sans\ Mono\ 11
+        set gfn=DejaVu\ Sans\ Mono\ 11
         set columns=100
     else
         set columns=100
