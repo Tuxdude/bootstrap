@@ -15,7 +15,7 @@ export USE_CCACHE=1
 gmake() {
     if [[ $PWD == $ANDROID_ROOT/* || $PWD == "$ANDROID_ROOT" ]]
     then
-        $HOME/bin/gmake $@
+        $HOME/bin/gmake-381 $@
     else
         /usr/bin/gmake $@
     fi
@@ -23,11 +23,10 @@ gmake() {
 
 _override_android_make() {
     if [[ $PWD == $ANDROID_ROOT/* || $PWD == "$ANDROID_ROOT" ]]; then
-        $HOME/bin/make $@
+        $HOME/bin/make-381 $@
     elif [ "$OVERRIDE_WORK_MAKE" == 1 ]; then
         _override_work_make $@
     else
         /usr/bin/make $@
     fi
 }
-export OVERRIDE_ANDROID_MAKE=1

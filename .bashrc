@@ -10,7 +10,7 @@ done
 
 # Set the terminal window title
 settitle () {
-    if [ -z "$1" ] ; then
+    if [ -z "$1" ]; then
         if [ -z "${SSH_CONNECTION}" ]; then
             export PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
         else
@@ -19,16 +19,26 @@ settitle () {
     fi
 }
 
-# Override make as neccessary, not everyone is happy with make > 3.81
-make() {
-    if [ "$OVERRIDE_ANDROID_MAKE" == "1" ]; then
-        _override_android_make $@
-    elif [ "$OVERRIDE_WORK_MAKE" == 1 ]; then
-        _override_work_make $@
-    else
-        /usr/bin/make $@
-    fi
+_is_function () {
+    declare -f -F "$1" > /dev/null
+    return $?
 }
+
+# Override make as neccessary, not everyone is happy with make > 3.81
+if [[ -z "$SKIP_OVERRIDE_MAKE" ]]; then
+   if _is_function _override_android_make || _is_function _override_work_make; then
+
+        make() {
+            if _is_function _override_android_make; then
+                _override_android_make $@
+            elif _is_function _override_work_make; then
+                _override_work_make $@
+            else
+                /usr/bin/make $@
+            fi
+        }
+    fi
+fi
 
 # Sort du's output by size
 duf() {
