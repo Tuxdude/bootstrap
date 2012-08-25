@@ -24,7 +24,7 @@ gmake() {
 _override_android_make() {
     if [[ $PWD == $ANDROID_ROOT/* || $PWD == "$ANDROID_ROOT" ]]; then
         $HOME/bin/make-381 $@
-    elif [ "$OVERRIDE_WORK_MAKE" == 1 ]; then
+    elif _is_function _override_work_make; then
         _override_work_make $@
     else
         /usr/bin/make $@
