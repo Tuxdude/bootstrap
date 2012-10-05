@@ -11,22 +11,3 @@ elif [ "$HOSTNAME" == "Suse1520" ]; then
 fi
 
 export USE_CCACHE=1
-
-gmake() {
-    if [[ $PWD == $ANDROID_ROOT/* || $PWD == "$ANDROID_ROOT" ]]
-    then
-        $HOME/bin/gmake-381 $@
-    else
-        /usr/bin/gmake $@
-    fi
-}
-
-_override_android_make() {
-    if [[ $PWD == $ANDROID_ROOT/* || $PWD == "$ANDROID_ROOT" ]]; then
-        $HOME/bin/make-381 $@
-    elif _is_function _override_work_make; then
-        _override_work_make $@
-    else
-        /usr/bin/make $@
-    fi
-}

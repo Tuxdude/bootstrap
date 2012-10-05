@@ -24,22 +24,6 @@ _is_function () {
     return $?
 }
 
-# Override make as neccessary, not everyone is happy with make > 3.81
-if [[ -z "$SKIP_OVERRIDE_MAKE" ]]; then
-   if _is_function _override_android_make || _is_function _override_work_make; then
-
-        make() {
-            if _is_function _override_android_make; then
-                _override_android_make $@
-            elif _is_function _override_work_make; then
-                _override_work_make $@
-            else
-                /usr/bin/make $@
-            fi
-        }
-    fi
-fi
-
 # Sort du's output by size
 duf() {
     du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
@@ -81,6 +65,7 @@ alias rebuild_tags='/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .'
 alias fixfiles='sudo find . -type f -exec chmod 0644 {} \;'
 alias fixdir='sudo find . -type d -exec chmod 0755 {} \;'
 alias kbfix='setxkbmap -v 10 -display $DISPLAY -geometry "pc(pc105)" -keycodes "evdev+aliases(qwerty)" -option ctrl:nocaps -option compose:rctrl'
+alias xauthfix='xauth extract - :`echo $DISPLAY |awk -F: "{print $2}"` | sudo su -c "xauth merge -"'
 
 # Set the default title
 settitle
