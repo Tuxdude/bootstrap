@@ -70,7 +70,6 @@ au BufReadPost *.inc set syntax=make
 if has("gui_running")
     if (match(hostname(), 'WingSaber') >= 0)
         set lines=40 columns=120
-        winpos 200 100
     elseif (match(hostname(), 'StarScream') >= 0)
         set gfn=DejaVu\ Sans\ Mono\ 11
         set columns=100
