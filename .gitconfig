@@ -29,3 +29,7 @@
 
 [include]
     path            = .gitconfig-userinfo
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
