@@ -57,6 +57,8 @@ lastmod() {
 gitmulti() {
     for dir in $(find . -maxdepth 2 -name .git | xargs dirname); do cd $dir && pwd && git $@ && echo && cd - > /dev/null; done
 }
+complete -o bashdefault -o default -o nospace -F _git gitmulti 2>/dev/null \
+            || complete -o default -o nospace -F _git gitmulti
 
 # Custom prompt
 if [ "$OVERRIDE_CUSTOM_PROMPT" != "1" ]; then
