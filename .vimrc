@@ -68,13 +68,24 @@ let g:doxygen_enhanced_color=1
 au BufReadPost *.inc set syntax=make
 
 if has("gui_running")
-    if (match(hostname(), 'WingSaber') >= 0)
-        set lines=40 columns=100
-    elseif (match(hostname(), 'StarScream') >= 0)
-        set gfn=DejaVu\ Sans\ Mono\ 11
-        set columns=100
+    if &diff
+        if (match(hostname(), 'WingSaber') >= 0)
+            set lines=40 columns=200
+        elseif (match(hostname(), 'StarScream') >= 0)
+            set gfn=DejaVu\ Sans\ Mono\ 11
+            set columns=200
+        else
+            set columns=200
+        endif
     else
-        set columns=100
+        if (match(hostname(), 'WingSaber') >= 0)
+            set lines=40 columns=100
+        elseif (match(hostname(), 'StarScream') >= 0)
+            set gfn=DejaVu\ Sans\ Mono\ 11
+            set columns=100
+        else
+            set columns=100
+        endif
     endif
     colorscheme DesertSaber
 endif
