@@ -82,6 +82,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# Less with colors
+export LESS='-R'
+export LESSOPEN='|pygmentize -g %s'
+
 # Handy aliases
 # Source grep aliases
 alias tgrep="find . -follow -type f -name \*.txt | xargs grep -H -n $1"
@@ -92,11 +96,13 @@ alias srcgrep="find . -follow -type f -name \*.[hcmCSs] -o -name \*.asm -o -name
 alias allgrep="find . -follow -type f | xargs grep -H -n $1"
 
 # Misc aliases
+alias vless='vim -u /usr/share/vim/current/macros/less.vim'
 alias rebuild_tags='/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .'
 alias fixfiles='sudo find . -type f -exec chmod 0644 {} \;'
 alias fixdir='sudo find . -type d -exec chmod 0755 {} \;'
 alias kbfix='setxkbmap -v 10 -display $DISPLAY -geometry "pc(pc105)" -keycodes "evdev+aliases(qwerty)" -option ctrl:nocaps -option compose:rctrl'
 alias xauthfix='xauth extract - :`echo $DISPLAY |awk -F: "{print $2}"` | sudo su -c "xauth merge -"'
+
 
 # Set the default title
 settitle
