@@ -1,0 +1,7 @@
+# Exclud everything in .config
+*
+
+# Except the .gitignore and powerline stuff
+!.gitignore
+!powerline/
+!powerline/*

@@ -1,15 +1,34 @@
+# Exclude everything
 /*
 
+# Except .vim
 !/.vim/
 !/.vim/*
+# Exclude the .netwrhist which gets updated
 /.vim/.netrwhist
 
+# Except .bashrc-plugins
 !/.bashrc-plugins/
 !/.bashrc-plugins/*
+# Exclude *work.sh
 /.bashrc-plugins/*work.sh
 
+# Except bash startup scripts
 !/.profile
 !/.bashrc
+
+# Except gitconfig and gitignore
 !/.gitconfig
 !/.gitignore
+
+# Except vimrc
 !/.vimrc
+
+# Except fonts stuff (for powerline)
+!/.fonts/
+!/.fonts/*
+!/.fonts.conf.d/
+!/.fonts.conf.d/*
+
+# Except 
+!/.config/

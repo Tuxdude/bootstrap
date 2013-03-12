@@ -90,4 +90,10 @@ if has("gui_running")
     colorscheme DesertSaber
 endif
 
+" Load powerline bindings
+set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
+
+" To make the powerline status line show up in non-split windows
+set laststatus=2
+
 " ~/.vimrc ends here
