@@ -2,6 +2,10 @@
 " Author: Ash<tuxdude.github@gmail.com>
 "
 
+" Execute pathogen as the first
+execute pathogen#infect()
+execute pathogen#helptags()
+
 " BEGIN DEFAULT OPENSUSE VIMRC
 " skeletons
 function! SKEL_spec()
