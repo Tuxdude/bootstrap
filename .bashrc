@@ -53,17 +53,16 @@ lastmod() {
     fi
 }
 
+
 # Run git in multiple repos at the same level
 gitmulti() {
     for dir in $(find . -maxdepth 2 -name .git | xargs dirname); do cd $dir && pwd && git $@ && echo && cd - > /dev/null; done
 }
-complete -o bashdefault -o default -o nospace -F _git gitmulti 2>/dev/null \
+if [ -z "$IN_CBE" ]; then
+    complete -o bashdefault -o default -o nospace -F _git gitmulti 2>/dev/null \
             || complete -o default -o nospace -F _git gitmulti
-
-# Custom prompt
-if [ "$OVERRIDE_CUSTOM_PROMPT" != "1" ]; then
-    export PS1="<\[\033[1;31m\]\@\[\033[0m\]> \[\033[1;32m\]\u\[\033[0;36m\]@\[\033[1;34m\]\h:\[\033[0;33m\]\w\[\033[0m\]\n\$ "
 fi
+
 
 # EDITOR env var used by multiple programs
 export EDITOR=/usr/bin/vim
@@ -108,10 +107,13 @@ set_powerline_prompt() {
     PS1="$(powerline shell left -r bash_prompt --last_exit_code=$?)\n\$ "
 }
 
-if hash powerline 2>/dev/null; then
+if [ -z "$IN_CBE" ] && hash powerline 2>/dev/null || [[ -z "$IN_CBE" && -e $HOME/.local/bin/powerline ]]; then
     export PROMPT_COMMAND="set_powerline_prompt; set_title"
 else
-    # Fallback to a much simpler prompt
+    # Fallback to a much simpler but Custom prompt
+    if [ "$OVERRIDE_CUSTOM_PROMPT" != "1" ]; then
+        export PS1="<\[\033[1;31m\]\@\[\033[0m\]> \[\033[1;32m\]\u\[\033[0;36m\]@\[\033[1;34m\]\h:\[\033[0;33m\]\w\[\033[0m\]\n\$ "
+    fi
     if [[ -z "${SSH_CONNECTION}" && -z "$IN_CBE" ]]; then
         echo "Unable to find powerline, disabling it!!!"
     fi
