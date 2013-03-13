@@ -90,10 +90,21 @@ if has("gui_running")
     colorscheme DesertSaber
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Begin Powerline
+"
+" https://powerline.readthedocs.org/en/latest/installation/linux.html
+" Install Powerline using:
+" pip install git+git://github.com/Lokaltog/powerline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Load powerline bindings
 set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " To make the powerline status line show up in non-split windows
 set laststatus=2
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" End Powerline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ~/.vimrc ends here
