@@ -107,6 +107,20 @@ set rtp+=~/.vim/bundle/powerline/bindings/vim
 
 " To make the powerline status line show up in non-split windows
 set laststatus=2
+
+" Hide the default mode text below the Status Line
+set noshowmode
+
+" Terminal timeout when pressing Escape key
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        autocmd InsertEnter * set timeoutlen=0
+        autocmd InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " End Powerline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
