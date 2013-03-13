@@ -108,6 +108,6 @@ alias xauthfix='xauth extract - :`echo $DISPLAY |awk -F: "{print $2}"` | sudo su
 #settitle
 
 set_powerline_prompt() {
-    PS1="$(powerline shell left -r bash_prompt --last_exit_code=$?)\n"
+    PS1="$(powerline shell left -r bash_prompt --last_exit_code=$?)\n\$ "
 }
 export PROMPT_COMMAND="set_powerline_prompt"
