@@ -1,4 +1,4 @@
-# Exclud everything in .config
+# Exclude everything in .config
 *
 
 # Except the .gitignore and powerline stuff
