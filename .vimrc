@@ -39,7 +39,12 @@ function! SKEL_spec()
     exe "%s/specRPM_CREATION_NAME/" . expand("%:t:r") . "/ge"
     setf spec
 endfunction
-autocmd BufNewFile *.spec call SKEL_spec()
+
+augroup SpecSetup
+    autocmd!
+    autocmd BufNewFile *.spec call SKEL_spec()
+augroup END
+
 " END DEFAULT OPENSUSE VIMRC
 
 " Enable filetype plugin
@@ -54,7 +59,7 @@ set softtabstop=4
 set smarttab
 set ruler
 syntax enable
-set hls!
+set hlsearch!
 
 " Taglist plugin
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
@@ -69,7 +74,26 @@ let g:load_doxygen_syntax=1
 let g:doxygen_enhanced_color=1
 
 " Force .inc files as Makefile syntax highlighting
-au BufReadPost *.inc set syntax=make
+augroup IncAsMakefiles
+    autocmd!
+    autocmd BufReadPost *.inc set syntax=make
+augroup END
+
+" Setup for vimdiff
+" Call this only in diff mode
+func VimDiffSetup()
+    " Set the same filetype for both the diff windows
+    if len(&ft)
+        call setwinvar(2/winnr(),'&ft',&ft)
+    else
+        let &ft=getwinvar(2/winnr(),'&ft') 
+    endif
+
+    " Disable folding in diff mode
+    set nofoldenable foldcolumn=0
+    wincmd b
+    set nofoldenable foldcolumn=0
+endfun
 
 if has("gui_running")
     if &diff
@@ -81,6 +105,12 @@ if has("gui_running")
         else
             set columns=200
         endif
+
+        " Setup on loading vimdiff
+        augroup SmartDiffSetup
+            autocmd!
+            autocmd VimEnter * :call VimDiffSetup()
+        augroup END
     else
         if (match(hostname(), 'WingSaber') >= 0)
             set lines=40 columns=100
@@ -104,13 +134,13 @@ endif
 
 " Load powerline bindings
 set rtp+=~/.vim/bundle/powerline/bindings/vim
-
 " To make the powerline status line show up in non-split windows
 set laststatus=2
-
-" Hide the default mode text below the Status Line
+" Hide the default mode text below the Status line
 set noshowmode
-
+" Avoid junk characters in the Status line
+set fillchars+=stl:\ ,stlnc:\
+set encoding=utf-8
 " Terminal timeout when pressing Escape key
 if ! has('gui_running')
     set ttimeoutlen=10
