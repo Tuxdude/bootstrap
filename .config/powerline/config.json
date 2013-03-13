@@ -19,8 +19,8 @@
 			"theme": "default"
 		},
 		"shell": {
-			"colorscheme": "default",
-			"theme": "default"
+			"colorscheme": "termsaber",
+			"theme": "termsaber"
 		},
 		"tmux": {
 			"colorscheme": "default",
