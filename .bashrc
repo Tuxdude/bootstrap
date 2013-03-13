@@ -24,12 +24,12 @@ for ext in $HOME/.bashrc-plugins/*.sh; do
 done
 
 # Set the terminal window title
-settitle () {
+set_title () {
     if [ -z "$1" ]; then
         if [ -z "${SSH_CONNECTION}" ]; then
-            export PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
+            echo -ne "\033]0;${PWD}\007"
         else
-            export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+            echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"
         fi
     fi
 }
@@ -103,11 +103,17 @@ alias fixdir='sudo find . -type d -exec chmod 0755 {} \;'
 alias kbfix='setxkbmap -v 10 -display $DISPLAY -geometry "pc(pc105)" -keycodes "evdev+aliases(qwerty)" -option ctrl:nocaps -option compose:rctrl'
 alias xauthfix='xauth extract - :`echo $DISPLAY |awk -F: "{print $2}"` | sudo su -c "xauth merge -"'
 
-
-# Set the default title
-#settitle
-
+# Powerline
 set_powerline_prompt() {
     PS1="$(powerline shell left -r bash_prompt --last_exit_code=$?)\n\$ "
 }
-export PROMPT_COMMAND="set_powerline_prompt"
+
+if hash powerline 2>/dev/null; then
+    export PROMPT_COMMAND="set_powerline_prompt; set_title"
+else
+    # Fallback to a much simpler prompt
+    if [[ -z "${SSH_CONNECTION}" && -z "$IN_CBE" ]]; then
+        echo "Unable to find powerline, disabling it!!!"
+    fi
+    export PROMPT_COMMAND="set_title"
+fi
