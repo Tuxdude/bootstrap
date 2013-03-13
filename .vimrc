@@ -99,7 +99,7 @@ endif
 "
 " https://powerline.readthedocs.org/en/latest/installation/linux.html
 " Install Powerline using:
-" pip install git+git://github.com/Lokaltog/powerline
+" pip install --user git+git://github.com/Lokaltog/powerline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Load powerline bindings
