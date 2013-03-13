@@ -103,7 +103,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Load powerline bindings
-set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
+set rtp+=~/.vim/bundle/powerline/bindings/vim
 
 " To make the powerline status line show up in non-split windows
 set laststatus=2
