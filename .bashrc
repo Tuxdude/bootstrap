@@ -26,7 +26,9 @@ done
 # Set the terminal window title
 set_title () {
     if [ -z "$1" ]; then
-        if [ -z "${SSH_CONNECTION}" ]; then
+        if [ -n "$WINDOW_TITLE" ]; then
+            echo -ne "\033]0;$WINDOW_TITLE\007"
+        elif [ -z "${SSH_CONNECTION}" ]; then
             echo -ne "\033]0;${PWD}\007"
         else
             echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"
