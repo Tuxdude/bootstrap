@@ -14,6 +14,9 @@
             },
             "branch": {
                 "before": " "
+            },
+            "sandbox_perforce_branch_name": {
+                "before": " "
             }
         },
         "segments": {
