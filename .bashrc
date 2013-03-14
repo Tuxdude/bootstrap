@@ -111,6 +111,7 @@ set_powerline_prompt() {
 
 if [ -z "$IN_CBE" ] && hash powerline 2>/dev/null || [[ -z "$IN_CBE" && -e $HOME/.local/bin/powerline ]]; then
     export PROMPT_COMMAND="set_powerline_prompt; set_title"
+    export USE_POWERLINE="1"
 else
     # Fallback to a much simpler but Custom prompt
     if [ "$OVERRIDE_CUSTOM_PROMPT" != "1" ]; then

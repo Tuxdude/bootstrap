@@ -4,12 +4,15 @@
 		"user": { "fg": "white", "bg": "darkblue", "attr": ["bold"] },
 		"superuser": { "fg": "white", "bg": "brightred", "attr": ["bold"] },
 		"virtualenv": { "fg": "white", "bg": "darkcyan" },
-		"branch": { "fg": "gray9", "bg": "darkestred" },
+		"branch": { "fg": "white", "bg": "darkestred" },
 		"cwd": { "fg": "yellow", "bg": "black" },
 		"cwd:current_folder": { "fg": "yellow", "bg": "black", "attr": ["bold"] },
 		"cwd:divider": { "fg": "gray7", "bg": "black" },
 		"hostname": { "fg": "white", "bg": "darkestgreen" },
 		"exit_fail": { "fg": "white", "bg": "darkestred" },
-		"exit_success": { "fg": "white", "bg": "darkestgreen" }
+		"exit_success": { "fg": "white", "bg": "darkestgreen" },
+		"sandbox_id": { "fg": "white", "bg": "darkorange3" },
+		"sandbox_perforce_branch_name": { "fg": "white", "bg": "darkestblue" },
+		"sandbox_flavor": { "fg": "white", "bg": "darkorange" }
 	}
 }
