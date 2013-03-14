@@ -3,5 +3,4 @@
 
 # Except the .gitignore and powerline stuff
 !.gitignore
-!powerline/
-!powerline/*
+!powerline
