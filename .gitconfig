@@ -2,12 +2,27 @@
 # Author: Ash <tuxdude.github@gmail.com>
 #
 
+[include]
+    path            = .gitconfig-userinfo
+
 [color]
     ui              = true
+
+[color "status"]
+    header          = blue
+
+[color "grep"]
+    filename        = magenta
 
 [core]
     autocrlf        = false
     pager           = 
+
+[diff]
+    tool            = meld
+
+[difftool]
+    prompt          = false
 
 [alias]
     type            = "cat-file -t"
@@ -28,10 +43,3 @@
     lc              = "log HEAD --stat --no-merges"
     abbr            = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=tformat:\"%C(red)%h %C(magenta)%ad %C(blue)%an%C(green)%d %C(reset)%s\" $commit; done' -"
     graphviz        = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
-
-[include]
-    path            = .gitconfig-userinfo
-[diff]
-	tool = meld
-[difftool]
-	prompt = false
