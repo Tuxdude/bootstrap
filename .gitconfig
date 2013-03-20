@@ -43,3 +43,9 @@
     lc              = "log HEAD --stat --no-merges"
     abbr            = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=tformat:\"%C(red)%h %C(magenta)%ad %C(blue)%an%C(green)%d %C(reset)%s\" $commit; done' -"
     graphviz        = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+
+
+    get-unreachable-objects = "fsck --unreachable --no-reflogs"
+    get-unreachable-commits = "!git get-unreachable-objects | grep 'unreachable commit' | awk '{print $3;}'"
+    get-unreachable-trees = "!git get-unreachable-objects | grep 'unreachable trees' | awk '{print $3;}'"
+    unreachable-commits-graph    = "!git tree $@ $(git get-unreachable-commits)"
