@@ -127,9 +127,17 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Begin Powerline
 "
-" https://powerline.readthedocs.org/en/latest/installation/linux.html
-" Install Powerline using:
-" pip install --user git+git://github.com/Lokaltog/powerline
+" Read this documentation
+" https://powerline.readthedocs.org/en/latest/
+"
+" To install:
+" Get the Powerline repo from (forked of github.com/Lokaltog/powerline)
+" git clone github:Tuxdude/powerline
+" or
+" git clone git://github.com/Tuxdude/powerline.git
+"
+" If the destination is different than /data/dev-stuff/github-repos/powerline
+" create a symlink to this location
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Load powerline bindings
