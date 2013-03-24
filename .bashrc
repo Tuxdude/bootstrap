@@ -55,6 +55,10 @@ lastmod() {
     fi
 }
 
+# Hook up git log's bash-completion to git-forest
+_git_forest () {
+    _git_log
+}
 
 # Run git in multiple repos at the same level
 gitmulti() {
