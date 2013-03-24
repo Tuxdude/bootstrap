@@ -37,8 +37,8 @@
     add-unmerged    = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 
 
-    tree            = "forest --pretty=format:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an %C(reset)%s\" --style=15 --reverse"
-    lgf             = "forest --pretty=format:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an %C(reset)%s\" --style=15"
+    tree            = "forest --pretty=format:\"%C(magenta)(%ar) %C(blue)%an %C(reset)%s\" --style=15 --sha --highlight-sha --reverse"
+    lgf             = "forest --pretty=format:\"%C(magenta)(%ar) %C(blue)%an %C(reset)%s\" --style=15 --sha --highlight-sha"
     lg              = "log --graph --decorate --abbrev-commit --pretty=tformat:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an%C(green)%d %C(reset)%s\""
     lc              = "log HEAD --stat --no-merges"
     abbr            = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=tformat:\"%C(red)%h %C(magenta)%ad %C(blue)%an%C(green)%d %C(reset)%s\" $commit; done' -"
@@ -49,4 +49,4 @@
     get-unreachable-commits = "!git get-unreachable-objects 2>/dev/null | grep 'unreachable commit' | awk '{print $3;}'"
     get-unreachable-trees = "!git get-unreachable-objects 2>/dev/null | grep 'unreachable trees' | awk '{print $3;}'"
     get-lost-index-changes = "fsck --unreachable --no-reflogs --cache --lost-found"
-    unreachable-commits-graph  = "!unreachable_commits=\"$(git get-unreachable-commits)\" && echo $unreachable_commits && git tree $unreachable_commits"
+    unreachable-commits-graph  = "!git tree $(git get-unreachable-commits)"
