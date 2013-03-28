@@ -50,3 +50,9 @@
     get-unreachable-trees = "!git get-unreachable-objects 2>/dev/null | grep 'unreachable trees' | awk '{print $3;}'"
     get-lost-index-changes = "fsck --unreachable --no-reflogs --cache --lost-found"
     unreachable-commits-graph  = "!git tree $(git get-unreachable-commits)"
+
+[instaweb]
+    local = true
+    httpd = webrick
+    port = 12345
+    browser = chromium
