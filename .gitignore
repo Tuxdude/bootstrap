@@ -24,6 +24,11 @@
 # Except vimrc
 !/.vimrc
 
+# Except tmuxstuff
+!/.tmux.conf
+!/.tmux/
+!/.tmux/*
+
 # Except fonts stuff (for powerline)
 !/.fonts/
 !/.fonts/*
