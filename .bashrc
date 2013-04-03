@@ -107,25 +107,25 @@ alias fixfiles='sudo find . -type f -exec chmod 0644 {} \;'
 alias fixdir='sudo find . -type d -exec chmod 0755 {} \;'
 alias kbfix='setxkbmap -v 10 -display $DISPLAY -geometry "pc(pc105)" -keycodes "evdev+aliases(qwerty)" -option ctrl:nocaps -option compose:rctrl'
 alias xauthfix='xauth extract - :`echo $DISPLAY |awk -F: "{print $2}"` | sudo su -c "xauth merge -"'
+alias tmux='tmux -2'
 
 # Powerline
 set_powerline_prompt() {
     PS1="$(powerline shell left -r bash_prompt --last_exit_code=$?)\n\$ "
 }
 
-if [ -z "$IN_CBE" ] && hash powerline 2>/dev/null || [[ -z "$IN_CBE" && -e $HOME/.local/bin/powerline ]]; then
-    export PROMPT_COMMAND="set_powerline_prompt; set_title"
+if [ -z "$IN_CBE" ] && [ -n "$TMUX" ] && hash powerline 2>/dev/null || [[ -z "$IN_CBE" && -n "$TMUX" && -e $HOME/.local/bin/powerline ]]; then
     export USE_POWERLINE="1"
+    if [ "$OVERRIDE_CUSTOM_PROMPT" != "1" ]; then
+        export PS1="\[\033[0;33m\]\w\[\033[0m\]\n\$ "
+    fi
 else
     # Fallback to a much simpler but Custom prompt
     if [ "$OVERRIDE_CUSTOM_PROMPT" != "1" ]; then
         export PS1="<\[\033[1;31m\]\@\[\033[0m\]> \[\033[1;32m\]\u\[\033[0;36m\]@\[\033[1;34m\]\h:\[\033[0;33m\]\w\[\033[0m\]\n\$ "
     fi
-    if [[ -z "${SSH_CONNECTION}" && -z "$IN_CBE" ]]; then
-        echo "Unable to find powerline, disabling it!!!"
-    fi
-    export PROMPT_COMMAND="set_title"
 fi
+export PROMPT_COMMAND="set_title"
 
 # Setup virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
