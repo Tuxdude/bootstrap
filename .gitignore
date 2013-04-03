@@ -30,8 +30,5 @@
 !/.fonts.conf.d/
 !/.fonts.conf.d/*
 
-# Except .pydistutils.cfg
-!/.pydistutils.cfg
-
 # Except the .config directory for including .config/powerline
 !/.config/
