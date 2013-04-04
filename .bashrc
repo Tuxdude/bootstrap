@@ -108,6 +108,7 @@ alias fixdir='sudo find . -type d -exec chmod 0755 {} \;'
 alias kbfix='setxkbmap -v 10 -display $DISPLAY -geometry "pc(pc105)" -keycodes "evdev+aliases(qwerty)" -option ctrl:nocaps -option compose:rctrl'
 alias xauthfix='xauth extract - :`echo $DISPLAY |awk -F: "{print $2}"` | sudo su -c "xauth merge -"'
 alias tmux='tmux -2'
+alias picocom='picocom -b 115200'
 
 # Powerline
 set_powerline_prompt() {
