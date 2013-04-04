@@ -115,8 +115,20 @@ set_powerline_shell_prompt() {
     PS1="$(powerline shell left -r bash_prompt --last_exit_code=$?)\n\$ "
 }
 
-if [ -z "$IN_CBE" ] && [ -n "$TMUX" ] && hash powerline 2>/dev/null || [[ -z "$IN_CBE" && -n "$TMUX" && -e $HOME/.local/bin/powerline ]]; then
+# Store tmux envs
+store_tmux_envs() {
+    if [ -n "$TMUX" ]; then
+        tmux_pane=$(tmux display-message -p '#S_#I_#P')
+        for env_var in $POWERLINE_ENVS; do
+            eval env_var_value='$'$(echo $env_var)
+            tmux set-environment POWERLINE_"$tmux_pane"_"$env_var" "$env_var_value"
+        done
+    fi
+}
+
+if [ -z "$IN_CBE" ] && [ -n "$TMUX" ] && { hash powerline 2>/dev/null || [ -e $HOME/.local/bin/powerline ] ;}; then
     export USE_POWERLINE="1"
+    export POWERLINE_ENVS="SANDBOX_ID BRANCHNAME FLAVOR PWD"
     if [ "$OVERRIDE_CUSTOM_PROMPT" != "1" ]; then
         export PS1="\[\033[0;33m\]\w\[\033[0m\]\n\$ "
     fi
@@ -126,7 +138,7 @@ else
         export PS1="<\[\033[1;31m\]\@\[\033[0m\]> \[\033[1;32m\]\u\[\033[0;36m\]@\[\033[1;34m\]\h:\[\033[0;33m\]\w\[\033[0m\]\n\$ "
     fi
 fi
-export PROMPT_COMMAND="set_title"
+export PROMPT_COMMAND="set_title; store_tmux_envs"
 
 # Setup virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
