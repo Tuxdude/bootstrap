@@ -110,8 +110,8 @@ alias xauthfix='xauth extract - :`echo $DISPLAY |awk -F: "{print $2}"` | sudo su
 alias tmux='tmux -2'
 alias picocom='picocom -b 115200'
 
-# Powerline
-set_powerline_prompt() {
+# Powerline Shell prompt
+set_powerline_shell_prompt() {
     PS1="$(powerline shell left -r bash_prompt --last_exit_code=$?)\n\$ "
 }
 
