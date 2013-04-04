@@ -123,6 +123,9 @@ store_tmux_envs() {
             eval env_var_value='$'$(echo $env_var)
             tmux set-environment POWERLINE_"$tmux_pane"_"$env_var" "$env_var_value"
         done
+
+        # Refresh the tmux client status bar
+        tmux refresh-client -S
     fi
 }
 
