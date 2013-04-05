@@ -1,0 +1,5 @@
+#!/bin/bash
+# This hook is run after every virtualenv is activated.
+
+# Within tmux, do not set virtualenv name in PS1
+[ -n "$TMUX" ] && [ -n "$_OLD_VIRTUAL_PS1" ] && export PS1="$_OLD_VIRTUAL_PS1"

@@ -37,3 +37,6 @@
 
 # Except the .config directory for including .config/powerline
 !/.config/
+
+# Except the virtualenv stuff
+!/.virtualenvs/
