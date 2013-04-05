@@ -9,10 +9,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# Less with colors
-export LESS='-R'
-export LESSOPEN='|pygmentize -g %s'
-
 # Handy aliases
 # Source grep aliases
 alias tgrep="find . -follow -type f -name \*.txt | xargs grep -H -n $1"
