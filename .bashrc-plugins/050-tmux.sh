@@ -18,8 +18,8 @@ store_tmux_envs() {
 
 tmux_start_console() {
     session_name="CONSOLE"
-    if tmux -q has-session -t "$session_name"; then
-        tmux attach-session -t "$session_name"
+    if tmux -q has-session -t "$session_name" 2>/dev/null; then
+        tmux -2 attach-session -t "$session_name"
     else
         # Window 0
         tmux new-session -d -s "$session_name" -n "picocom ttyS0"
@@ -42,8 +42,8 @@ tmux_start_console() {
 
 tmux_start_dev_station() {
     session_name="DEV"
-    if tmux -q has-session -t "$session_name"; then
-        tmux attach-session -t "$session_name"
+    if tmux -q has-session -t "$session_name" 2>/dev/null; then
+        tmux -2 attach-session -t "$session_name"
     else
         # Window 0
         tmux new-session -d -s "$session_name" -n "telnet"
