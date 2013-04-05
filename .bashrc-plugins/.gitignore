@@ -1,0 +1,2 @@
+# Exclude *.swp in .config
+*.swp
