@@ -12,7 +12,9 @@ store_tmux_envs() {
         done
 
         # Refresh the tmux client status bar
-        tmux refresh-client -S
+        # This could fail if there is no open client, but a command is
+        # run using send-key, hence it is okay even if it fails
+        tmux refresh-client -S 2>/dev/null || true
     fi
 }
 
