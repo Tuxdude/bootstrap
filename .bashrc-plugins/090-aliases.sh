@@ -27,3 +27,4 @@ alias kbfix='setxkbmap -v 10 -display $DISPLAY -geometry "pc(pc105)" -keycodes "
 alias xauthfix='xauth extract - :`echo $DISPLAY |awk -F: "{print $2}"` | sudo su -c "xauth merge -"'
 alias tmux='tmux -2'
 alias picocom='picocom -b 115200'
+alias hd='od -Ax -tx1z -v'
