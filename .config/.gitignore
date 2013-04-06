@@ -1,6 +1,14 @@
 # Exclude everything in .config
 *
 
-# Except the .gitignore and powerline stuff
+# Except the .gitignore
 !.gitignore
+
+# Except the powerline stuff
 !powerline
+
+# Except the ipython config file
+!ipython/
+!ipython/profile_default
+!ipython/profile_default/ipython_config.py
+!ipython/profile_default/ipython_config_default.py
