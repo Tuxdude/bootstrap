@@ -40,3 +40,6 @@
 
 # Except the virtualenv stuff
 !/.virtualenvs/
+
+# Except .inputrc
+!/.inputrc
