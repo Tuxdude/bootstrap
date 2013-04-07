@@ -43,3 +43,6 @@
 
 # Except .inputrc
 !/.inputrc
+
+# Except .colordiffrc
+!/.colordiffrc
