@@ -28,3 +28,4 @@ alias xauthfix='xauth extract - :`echo $DISPLAY |awk -F: "{print $2}"` | sudo su
 alias tmux='tmux -2'
 alias picocom='picocom -b 115200'
 alias hd='od -Ax -tx1z -v'
+alias scpresume='rsync --partial --progress --archive --human-readable --compress --rsh=ssh --verbose'
