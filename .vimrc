@@ -164,11 +164,11 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if &term =~ '^screen' && exists('$TMUX')
-    " tmux knows the extended mouse mode
+    " Extended mouse mode in tmux
     set mouse+=a
     set ttymouse=xterm2
+
     " tmux sends xterm-style keys when xterm-keys option is on
-    " Ctrl + these keys in vim within tmux work only with these bindings
     execute "set <xUp>=\e[1;*A"
     execute "set <xDown>=\e[1;*B"
     execute "set <xRight>=\e[1;*C"
@@ -191,6 +191,6 @@ if &term =~ '^screen' && exists('$TMUX')
     execute "set <F10>=\e[21;*~"
     execute "set <F11>=\e[23;*~"
     execute "set <F12>=\e[24;*~"
-endi
+endif
 
 " ~/.vimrc ends here
