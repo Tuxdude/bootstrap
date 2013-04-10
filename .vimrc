@@ -163,7 +163,7 @@ endif
 " End Powerline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if &term =~ '^screen' && exists('$TMUX')
+if &term =~ '^screen'
     " Extended mouse mode in tmux
     set mouse+=a
     set ttymouse=xterm2
