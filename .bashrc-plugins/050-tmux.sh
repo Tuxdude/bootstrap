@@ -5,9 +5,9 @@
 # Store tmux envs
 store_tmux_envs() {
     if [ -n "$TMUX" -a -n "$TMUX_PANE" ]; then
-        tmux_pane=$(tmux display-message -pt $TMUX_PANE '#{session_name}_#{window_index}_#{pane_index}')
+        local tmux_pane=$(tmux display-message -pt $TMUX_PANE '#{session_name}_#{window_index}_#{pane_index}')
         for env_var in $POWERLINE_ENVS; do
-            eval env_var_value='$'$(echo $env_var)
+            eval local env_var_value='$'$(echo $env_var)
             tmux set-environment POWERLINE_"$tmux_pane"_"$env_var" "$env_var_value"
         done
 
@@ -19,7 +19,7 @@ store_tmux_envs() {
 }
 
 tmux_start_console() {
-    session_name="CONSOLE"
+    local session_name="CONSOLE"
     if tmux -q has-session -t "$session_name" 2>/dev/null; then
         tmux -2 attach-session -t "$session_name"
     else
@@ -43,7 +43,7 @@ tmux_start_console() {
 }
 
 tmux_start_dev_station() {
-    session_name="DEV"
+    local session_name="DEV"
     if tmux -q has-session -t "$session_name" 2>/dev/null; then
         tmux -2 attach-session -t "$session_name"
     else
