@@ -9,6 +9,9 @@ export EDITOR=/usr/bin/vim
 export LESS='-R'
 export LESSOPEN='|pygmentize -g %s'
 
+# grep with colors
+export GREP_OPTIONS='--color=auto'
+
 # Use vim as the Pager for man
 # ft=man            - Color the man page
 # ts=8              - Tab width matches less

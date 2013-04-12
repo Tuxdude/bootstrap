@@ -2,13 +2,6 @@
 # Author: Ash <tuxdude.github@gmail.com>
 #
 
-# Grep with colors
-if [ -x /usr/bin/dircolors ]; then
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # Handy aliases
 # Source grep aliases
 alias tgrep="find . -follow -type f -name \*.txt | xargs grep -H -n $1"
