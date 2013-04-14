@@ -143,8 +143,6 @@ endif
 " create a symlink to this location
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Load powerline bindings
-set rtp+=~/.vim/bundle/powerline/bindings/vim
 " To make the powerline status line show up in non-split windows
 set laststatus=2
 " Hide the default mode text below the Status line
