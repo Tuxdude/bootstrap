@@ -134,7 +134,7 @@ endif
 " https://powerline.readthedocs.org/en/latest/
 "
 " To install:
-" Get the Powerline repo from (forked of github.com/Lokaltog/powerline)
+" Get the Powerline repo from (forked off github.com/Lokaltog/powerline)
 " git clone github:Tuxdude/powerline
 " or
 " git clone git://github.com/Tuxdude/powerline.git
@@ -164,6 +164,10 @@ endif
 " End Powerline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Begin Tmux
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if &term =~ '^screen'
     " Extended mouse mode in tmux
     set mouse+=a
@@ -193,5 +197,8 @@ if &term =~ '^screen'
     execute "set <F11>=\e[23;*~"
     execute "set <F12>=\e[24;*~"
 endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" End Tmux
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ~/.vimrc ends here
