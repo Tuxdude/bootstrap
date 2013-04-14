@@ -7,6 +7,12 @@ _git_forest () {
     _git_log
 }
 
+# pip bash completion
+if hash pip 2> /dev/null; then
+    eval "$(pip completion --bash)"
+fi
+
+
 if [ -z "$IN_CBE" ]; then
 # Hook up git's bash-completion to gitmulti
     complete -o bashdefault -o default -o nospace -F _git gitmulti 2>/dev/null \
