@@ -73,6 +73,9 @@ map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 let g:load_doxygen_syntax=1
 let g:doxygen_enhanced_color=1
 
+" Disable P4 Active Status
+let g:p4EnableActiveStatus=0
+
 " Force .inc files as Makefile syntax highlighting
 augroup IncAsMakefiles
     autocmd!
