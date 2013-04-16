@@ -93,7 +93,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " Setup for vimdiff
 " Call this only in diff mode
-func VimDiffSetup()
+func! VimDiffSetup()
     " Set the same filetype for both the diff windows
     if len(&ft)
         call setwinvar(2/winnr(),'&ft',&ft)
