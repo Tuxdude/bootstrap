@@ -29,7 +29,7 @@ tmux_start_console() {
 
         # Window 1
         tmux new-window -t "$session_name" -n "picocom USB0"
-        tmux send-keys -t "$session_name":1 "picocom /dev/ttyUSB0" Enter
+        tmux send-keys -t "$session_name":1 "picocom /dev/ttyUSBProlific" Enter
 
         # Window 2
         tmux new-window -t "$session_name" -n "SHELL"
