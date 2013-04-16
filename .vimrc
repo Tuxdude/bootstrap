@@ -76,6 +76,11 @@ let g:doxygen_enhanced_color=1
 " Disable P4 Active Status
 let g:p4EnableActiveStatus=0
 
+" CtrlP stuff
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_root_markers = ['srcroot']
+let g:ctrlp_max_height = 25
+
 " Force .inc files as Makefile syntax highlighting
 augroup IncAsMakefiles
     autocmd!
