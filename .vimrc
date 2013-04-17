@@ -81,6 +81,17 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_root_markers = ['srcroot']
 let g:ctrlp_max_height = 25
 
+let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
+
+func! MyCtrlPMappings()
+    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
+endfunc
+
+func! s:DeleteBuffer()
+    exec "bd" fnamemodify(getline('.')[2:], ':p')
+    exec "norm \<F5>"
+endfunc
+
 " Force .inc files as Makefile syntax highlighting
 augroup IncAsMakefiles
     autocmd!
