@@ -20,3 +20,4 @@ test -z "$PROFILEREAD" && . /etc/profile || true
 #export LANG=en_US
 
 export PATH="$HOME/.local/bin:$JAVA_HOME/bin:$PATH:/sbin:/usr/sbin"
+export MANPATH="$MANPATH:$HOME/.local/share/man"
