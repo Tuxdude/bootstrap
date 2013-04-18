@@ -78,8 +78,30 @@ let g:p4EnableActiveStatus=0
 
 " CtrlP stuff
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_root_markers = ['srcroot']
+let g:ctrlp_root_markers = ['build.config']
 let g:ctrlp_max_height = 25
+let g:ctrlp_max_files = 500000
+let g:ctrlp_regexp = 1
+let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_user_command = 'find %s ( -type f -o -type l)'
+let g:ctrlp_lazy_update = 1
+let ctrlp_filter_greps = "".
+    \ "egrep -iv '\\.(" .
+    \ "jar|class|swp|swo|log|a|d|so|o|pyc|jpe?g|png|gif|mo|po" .
+    \ ")$' | " .
+    \ "egrep -v '^(\\./)?(" .
+    \ "deploy/|lib/|classes/|libs/|deploy/vendor/|.git/|.hg/|.svn/|.*migrations/" .
+    \ ")'"
+
+let ctrlp_git_command = "" .
+    \ "cd %s && git ls-files . -co --exclude-standard | " .
+    \ ctrlp_filter_greps
+
+let ctrlp_fallback_user_command = "" .
+    \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
+    \ ctrlp_filter_greps
+
+let g:ctrlp_user_command = ['.git/', ctrlp_git_command, ctrlp_fallback_user_command]
 
 let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
 
