@@ -114,7 +114,7 @@ func! s:DeleteBuffer()
     exec "norm \<F5>"
 endfunc
 
-" Force .inc files as Makefile syntax highlighting
+" Set Makefile syntax highlighting for *.inc
 augroup IncAsMakefiles
     autocmd!
     autocmd BufReadPost *.inc set syntax=make
