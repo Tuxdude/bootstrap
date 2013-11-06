@@ -17,7 +17,7 @@ test -z "$PROFILEREAD" && . /etc/profile || true
 #export LANG=de_DE.UTF-8	# uncomment this line for German output
 #export LANG=fr_FR.UTF-8	# uncomment this line for French output
 #export LANG=es_ES.UTF-8	# uncomment this line for Spanish output
-#export LANG=en_US
+export LANG=en_US.UTF-8
 
 export PATH="$HOME/.local/bin:$JAVA_HOME/bin:$PATH:/sbin:/usr/sbin"
 export MANPATH="$MANPATH:$HOME/.local/share/man"
