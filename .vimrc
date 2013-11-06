@@ -120,6 +120,12 @@ augroup IncAsMakefiles
     autocmd BufReadPost *.inc set syntax=make
 augroup END
 
+" Set Thrift syntax highlighting for *.thrift
+augroup ThriftAsThrift
+    autocmd!
+    autocmd BufReadPost *.thrift set syntax=thrift
+augroup END
+
 " NERDTree Plugin
 map <F3> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
