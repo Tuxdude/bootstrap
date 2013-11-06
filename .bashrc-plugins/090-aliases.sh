@@ -3,6 +3,10 @@
 #
 
 # Handy aliases
+
+# Basic ones
+alias ls='ls --color=auto'
+
 # Source grep aliases
 alias tgrep="find . -follow -type f -name \*.txt | xargs grep -H -n $1"
 alias hgrep="find . -follow -type f -name \*.h | xargs grep -H -n $1"
