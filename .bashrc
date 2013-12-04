@@ -7,6 +7,8 @@
 
 test -s ~/.alias && . ~/.alias || true
 
+test -z "$PROFILE_SOURCED" && source $HOME/.profile || true
+
 for ext in $HOME/.bashrc-plugins/*.sh; do
     source $ext
 done
