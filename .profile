@@ -19,7 +19,14 @@ test -z "$PROFILEREAD" && . /etc/profile || true
 #export LANG=es_ES.UTF-8	# uncomment this line for Spanish output
 export LANG=en_US.UTF-8
 
-export PATH="$HOME/.local/bin:$JAVA_HOME/bin:$PATH:/sbin:/usr/sbin:/usr/games"
+if [[ $OSTYPE == "linux-gnu" ]]; then
+    export PATH="$HOME/.local/bin:$JAVA_HOME/bin:$PATH:/sbin:/usr/sbin:/usr/games"
+elif [[ $OSTYPE == darwin* ]]; then
+    export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH:/sbin:/usr/sbin:/usr/games"
+else
+    echo "Unknown OS"
+fi
+
 export MANPATH="$MANPATH:$HOME/.local/share/man"
 
 # Set the flag that .profile was sourced
