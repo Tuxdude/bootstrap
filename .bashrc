@@ -5,7 +5,7 @@
 # Don't do anything for non-interactive shells
 [ -z "$PS1" ] && return
 
-test -s ~/.alias && . ~/.alias || true
+[ -s ~/.alias ] && . ~/.alias || true
 
 test -z "$PROFILE_SOURCED" && source $HOME/.profile || true
 
