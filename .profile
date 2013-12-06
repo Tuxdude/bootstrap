@@ -6,6 +6,15 @@
 # All other interactive shells will only read .bashrc; this is particularly
 # important for language settings, see below.
 
+if [ -n "$PROFILE_SOURCED" ]; then
+    if [[ $OSTYPE == darwin* && $(which stat) == '/usr/bin/stat' ]]; then
+        # On OS X always ensure we have these entries at the top of the PATH
+        # Tmux for instance overrides PATH before starting the shell
+        export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    fi
+    return
+fi
+
 test -z "$PROFILEREAD" && . /etc/profile || true
 
 # Most applications support several languages for their output.

@@ -7,7 +7,7 @@
 
 [ -s ~/.alias ] && . ~/.alias || true
 
-test -z "$PROFILE_SOURCED" && source $HOME/.profile || true
+source $HOME/.profile
 
 for ext in $HOME/.bashrc-plugins/*.sh; do
     source $ext
