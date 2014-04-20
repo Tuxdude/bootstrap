@@ -105,6 +105,13 @@ let g:ctrlp_user_command = ['.git/', ctrlp_git_command, ctrlp_fallback_user_comm
 
 let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
 
+let g:riv_fold_auto_update = 0
+
+augroup DisableRstFolding
+    autocmd!
+    autocmd Filetype rst setlocal nofoldenable
+augroup END
+
 func! MyCtrlPMappings()
     nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
 endfunc
