@@ -1,0 +1,8 @@
+# Exclude everything in .fonts
+*
+
+# Except the .gitignore
+!.gitignore
+
+# Except the PowerlineSymbols font file
+!PowerlineSymbols.otf
