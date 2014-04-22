@@ -18,28 +18,20 @@ store_tmux_envs() {
     fi
 }
 
-tmux_start_console() {
-    local session_name="CONSOLE"
-    if tmux -q has-session -t "$session_name" 2>/dev/null; then
-        tmux -2 attach-session -t "$session_name"
-    else
-        # Window 0
-        tmux new-session -d -s "$session_name" -n "picocom ttyS0"
-        tmux send-keys -t "$session_name":0 "picocom /dev/ttyS0" Enter
-
-        # Window 1
-        tmux new-window -t "$session_name" -n "picocom USB0"
-        tmux send-keys -t "$session_name":1 "picocom /dev/ttyUSBProlific" Enter
-
-        # Window 2
-        tmux new-window -t "$session_name" -n "SHELL"
-
-        # Select window 0
-        tmux select-window -t "$session_name":0
-
-        # Attach the sesssion
-        tmux -2 attach-session -t "$session_name"
+tmux_create_4_pane_window() {
+    if [ "$#" -ne 2 ]; then
+        return
     fi
+    if [ $2 -ne 0 ]; then
+        tmux new-session -d -s "$1"
+    else
+        echo "Creating another window"
+        tmux new-window -t "$1"
+    fi
+    tmux split-window -h
+    tmux split-window -v
+    tmux select-pane -L
+    tmux split-window -v
 }
 
 tmux_start_dev_station() {
@@ -48,25 +40,25 @@ tmux_start_dev_station() {
         tmux -2 attach-session -t "$session_name"
     else
         # Window 0
-        tmux new-session -d -s "$session_name" -n "telnet"
-        tmux split-window -h
-        tmux select-pane -L
+        tmux_create_4_pane_window "$session_name" 1
 
         # Window 1
-        tmux new-window -t "$session_name" -n "SANDBOX1"
-        tmux send-keys -t "$session_name":1 "switch-sandbox1" Enter
-        tmux split-window -h
-        tmux send-keys -t "$session_name":1 "switch-sandbox1" Enter
+        tmux_create_4_pane_window "$session_name" 0
 
         # Window 2
-        tmux new-window -t "$session_name" -n "SANDBOX3"
-        tmux send-keys -t "$session_name":2 "switch-sandbox3" Enter
-        tmux split-window -h
-        tmux send-keys -t "$session_name":2 "switch-sandbox3" Enter
+        tmux_create_4_pane_window "$session_name" 0
 
         # Window 3
-        tmux new-window -t "$session_name" -n "SCRATCH"
-        tmux split-window -h
+        tmux_create_4_pane_window "$session_name" 0
+
+        # Window 4
+        tmux_create_4_pane_window "$session_name" 0
+
+        # Window 5
+        tmux_create_4_pane_window "$session_name" 0
+
+        # Window 6
+        tmux_create_4_pane_window "$session_name" 0
 
         # Select Window 0
         tmux select-window -t "$session_name":0
