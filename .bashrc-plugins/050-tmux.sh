@@ -25,7 +25,6 @@ tmux_create_4_pane_window() {
     if [ $2 -ne 0 ]; then
         tmux new-session -d -s "$1"
     else
-        echo "Creating another window"
         tmux new-window -t "$1"
     fi
     tmux split-window -h
