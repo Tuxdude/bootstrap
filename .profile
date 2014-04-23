@@ -31,7 +31,7 @@ export LANG=en_US.UTF-8
 if [[ $OSTYPE == linux* ]]; then
     export PATH="$HOME/.local/bin:$JAVA_HOME/bin:$PATH:/sbin:/usr/sbin:/usr/games"
 elif [[ $OSTYPE == darwin* ]]; then
-    export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH:/sbin:/usr/sbin:/usr/games"
+    export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$PATH:/sbin:/usr/sbin:/usr/games"
 else
     echo "Unknown OS"
 fi
