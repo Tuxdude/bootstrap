@@ -27,3 +27,8 @@ alias picocom='picocom -b 115200'
 alias hd='od -Ax -tx1z -v'
 alias scpresume='rsync --partial --progress --archive --human-readable --compress --rsh=ssh --verbose'
 alias diff='colordiff'
+
+# ack exists as 'ack-grep' on linux but as 'ack' on OS X
+if [[ $OSTYPE == linux* ]]; then
+    alias ack='ack-grep'
+fi
