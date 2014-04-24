@@ -40,7 +40,7 @@
     tree            = "forest --pretty=format:\"%C(magenta)(%cr) %C(blue)%an %C(reset)%s\" --style=15 --sha --highlight-sha --reverse"
     lgf             = "forest --pretty=format:\"%C(magenta)(%cr) %C(blue)%an %C(reset)%s\" --style=15 --sha --highlight-sha"
     lg              = "log --graph --decorate --abbrev-commit --pretty=tformat:\"%C(red)%h %C(magenta)(%cr) %C(blue)%an%C(green)%d %C(reset)%s\""
-    lc              = "log HEAD --stat --no-merges"
+    lc              = "log --stat --no-merges"
     abbr            = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=tformat:\"%C(red)%h %C(magenta)%cd %C(blue)%an%C(green)%d %C(reset)%s\" $commit; done' -"
     graphviz        = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
 
