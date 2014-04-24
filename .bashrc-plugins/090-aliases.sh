@@ -32,3 +32,6 @@ alias diff='colordiff'
 if [[ $OSTYPE == linux* ]]; then
     alias ack='ack-grep'
 fi
+
+# Ag : The Silver Searcher
+alias ag="ag -U --noheading --color-line-number '0;32' --color-match '1;31' --color-path '0;35'"
