@@ -34,4 +34,4 @@ if [[ $OSTYPE == linux* ]]; then
 fi
 
 # Ag : The Silver Searcher
-alias ag="ag -U --noheading --color-line-number '0;32' --color-match '1;31' --color-path '0;35'"
+alias ag="ag --skip-vcs-ignores --hidden --noheading --color-line-number '0;32' --color-match '1;31' --color-path '0;35'"
