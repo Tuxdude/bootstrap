@@ -1,0 +1,8 @@
+# Exclude everything in .local/bin
+*
+
+# Except gitconfig and gitignore
+!.gitignore
+
+# Except the reattach-to-user-namespace-wrapper script
+!reattach-to-user-namespace-wrapper

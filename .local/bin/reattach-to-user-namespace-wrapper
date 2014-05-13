@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+#
+# Author: Ash <tuxdude.github@gmail.com>
+#
+
+# If reattach-to-user-namespace is available, make use of it
+if { hash reattach-to-user-namespace 2>/dev/null ;}; then
+  reattach-to-user-namespace $@
+# Otherwise just invoke the command directly
+else
+  exec "$@"
+fi

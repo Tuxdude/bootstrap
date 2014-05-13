@@ -17,6 +17,9 @@
 !/.profile
 !/.bashrc
 
+# Except .local stuff
+!/.local
+
 # Except gitconfig and gitignore
 !/.gitconfig
 !/.gitignore

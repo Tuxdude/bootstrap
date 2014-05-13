@@ -1,0 +1,9 @@
+# Exclude everything in .local
+*
+
+# Except gitconfig and gitignore
+!.gitignore
+
+# Except the bin directory
+!bin
+!bin/*
