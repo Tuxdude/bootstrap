@@ -1,9 +1,8 @@
-# Exclude everything in .local
+# Exclude everything in .android
 *
 
 # Except gitignore
 !.gitignore
 
 # Except the bin directory
-!bin
-!bin/*
+!adb_usb.ini

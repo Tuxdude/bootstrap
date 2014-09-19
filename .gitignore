@@ -49,3 +49,6 @@
 
 # Except .colordiffrc
 !/.colordiffrc
+
+# Except .android stuff
+!/.android
