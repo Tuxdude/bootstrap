@@ -18,6 +18,9 @@ store_tmux_envs() {
     fi
 }
 
+# Fix the tmux DISPLAY environment variable
+alias fixtmuxdisplay='export DISPLAY=":0"'
+
 tmux_create_4_pane_window() {
     if [ "$#" -ne 2 ]; then
         return
