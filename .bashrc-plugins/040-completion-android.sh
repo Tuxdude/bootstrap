@@ -205,7 +205,7 @@ function _adb()
       esac
       case "${prev}" in
         -v)
-          COMPREPLY=( $(compgen -W "brief process tag thread raw time long" -- ${cur}) )
+          COMPREPLY=( $(compgen -W "brief process tag thread threadtime raw time long" -- ${cur}) )
           return 0
           ;;
         -b)
