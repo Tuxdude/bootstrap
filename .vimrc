@@ -162,14 +162,7 @@ endfun
 
 if has("gui_running")
     if &diff
-        if (match(hostname(), 'WingSaber') >= 0)
-            set lines=40 columns=200
-        elseif (match(hostname(), 'StarScream') >= 0)
-            set gfn=DejaVu\ Sans\ Mono\ 11
-            set columns=200
-        else
-            set columns=200
-        endif
+        set columns=200
 
         " Setup on loading vimdiff
         augroup SmartDiffSetup
@@ -177,15 +170,17 @@ if has("gui_running")
             autocmd VimEnter * :call VimDiffSetup()
         augroup END
     else
-        if (match(hostname(), 'WingSaber') >= 0)
-            set lines=40 columns=100
-        elseif (match(hostname(), 'StarScream') >= 0)
-            set gfn=DejaVu\ Sans\ Mono\ 11
-            set columns=100
-        else
-            set columns=100
-        endif
+        set columns=100
     endif
+
+    " Set GUI Font
+    if (match(hostname(), 'OptimusPrime') >= 0 ||
+    \   match(hostname(), 'WingSaber') >= 0 ||
+    \   match(hostname(), 'StarScream') >= 0)
+        set guifont=DejaVu\ Sans\ Mono\ 11
+        set lines=50
+    endif
+
     colorscheme DesertSaber
 endif
 
