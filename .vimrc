@@ -137,6 +137,13 @@ augroup END
 map <F3> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" Mark Plugin
+let g:mwDefaultHighlightingPalette = 'extended'
+let g:mwAutoLoadMarks = 1
+let g:mwAutoSaveMarks = 1
+nmap <Plug>IgnoreMarkSearchNext <Plug>MarkSearchNext
+nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev
+
 " Setup for vimdiff
 " Call this only in diff mode
 func! VimDiffSetup()
@@ -255,5 +262,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " End Tmux
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Persist the global variables across sessions
+set viminfo+=!
 
 " ~/.vimrc ends here
