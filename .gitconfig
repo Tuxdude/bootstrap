@@ -52,8 +52,12 @@
     get-lost-index-changes = "fsck --unreachable --no-reflogs --cache --lost-found"
     unreachable-commits-graph  = "!git tree $(git get-unreachable-commits)"
 
+    webui = !~/.git-webui/release/libexec/git-core/git-webui
+
 [instaweb]
     local = true
     httpd = webrick
     port = 12345
     browser = chromium
+[webui]
+	autoupdate = true
