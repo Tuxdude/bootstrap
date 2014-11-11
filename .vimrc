@@ -121,6 +121,12 @@ func! s:DeleteBuffer()
     exec "norm \<F5>"
 endfunc
 
+" Set Java syntax highlighting for *.aidl
+augroup AidlAsjava
+    autocmd!
+    autocmd BufReadPost *.aidl set syntax=java
+augroup END
+
 " Set Makefile syntax highlighting for *.inc
 augroup IncAsMakefiles
     autocmd!
