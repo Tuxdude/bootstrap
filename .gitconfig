@@ -59,5 +59,9 @@
     httpd = webrick
     port = 12345
     browser = chromium
+
 [webui]
-	autoupdate = true
+    autoupdate = true
+
+[http]
+    cookiefile = ~/.gitcookies
