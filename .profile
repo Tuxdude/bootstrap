@@ -29,7 +29,9 @@ test -z "$PROFILEREAD" && . /etc/profile || true
 export LANG=en_US.UTF-8
 
 if [[ $OSTYPE == linux* ]]; then
-    export PATH="$HOME/.local/bin:$HOME/.local/sbin:$JAVA_HOME/bin:$PATH:/sbin:/usr/sbin:/usr/games"
+    export PATH="$HOME/.linuxbrew/bin:$HOME/.local/bin:$HOME/.local/sbin:$JAVA_HOME/bin:$PATH:/sbin:/usr/sbin:/usr/games"
+    export MANPATH="$HOME/.linuxbrew/share/man"
+    export INFOPATH="$HOME/.linuxbrew/share/info"
 elif [[ $OSTYPE == darwin* ]]; then
     export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$PATH:/sbin:/usr/sbin:/usr/games"
 else
