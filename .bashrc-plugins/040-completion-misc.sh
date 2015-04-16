@@ -12,6 +12,10 @@ if hash pip 2> /dev/null; then
     eval "$(pip completion --bash)"
 fi
 
+# npm bash completion
+if hash npm 2> /dev/null; then
+    source <(npm completion)
+fi
 
 if [ -z "$IN_CBE" ]; then
 # Hook up git's bash-completion to gitmulti
