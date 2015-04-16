@@ -139,6 +139,12 @@ augroup ThriftAsThrift
     autocmd BufReadPost *.thrift set syntax=thrift
 augroup END
 
+" Set Smali syntax highlighting for *.smali
+augroup SmaliAsSmali
+    autocmd!
+    autocmd BufReadPost *.smali set syntax=smali
+augroup END
+
 " NERDTree Plugin
 map <F3> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
