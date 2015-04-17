@@ -1,1 +1,1 @@
-/data/dev-stuff/github-repos/vim-scripts/taglist.vim
+/data/dev-stuff/git-repos/vim-scripts/taglist.vim/

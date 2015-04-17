@@ -1,1 +1,1 @@
-/data/dev-stuff/github-repos/vim-scripts/ctrlp.vim/
+/data/dev-stuff/git-repos/vim-scripts/ctrlp.vim/
