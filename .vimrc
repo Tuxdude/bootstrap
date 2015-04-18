@@ -156,6 +156,9 @@ let g:mwAutoSaveMarks = 1
 nmap <Plug>IgnoreMarkSearchNext <Plug>MarkSearchNext
 nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev
 
+" YouCompleteMe plugin
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
 " Indent Guide plugin
 let g:indent_guides_start_level = 2
 let g:indent_guides_enable_on_vim_startup = 1
