@@ -3,7 +3,7 @@
 #
 
 # EDITOR env var used by multiple programs
-export EDITOR=/usr/bin/vim
+export EDITOR="$(which vim)"
 
 # Less with colors
 export LESS='-R'
