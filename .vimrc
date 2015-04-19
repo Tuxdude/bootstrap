@@ -200,9 +200,8 @@ if has("gui_running")
         set guifont=DejaVu\ Sans\ Mono\ 11
         set lines=50
     endif
-
-    colorscheme DesertSaber
 endif
+colorscheme MolokaiSaber
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Begin Powerline
