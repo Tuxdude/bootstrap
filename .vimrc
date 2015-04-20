@@ -204,43 +204,32 @@ if has("gui_running")
 endif
 colorscheme MolokaiSaber
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Begin Powerline
-"
-" Read this documentation
-" https://powerline.readthedocs.org/en/latest/
-"
-" To install:
-" Get the Powerline repo from (forked off github.com/Lokaltog/powerline)
-" git clone github:Tuxdude/powerline
-" or
-" git clone git://github.com/Tuxdude/powerline.git
-"
-" If the destination is different than /data/dev-stuff/github-repos/powerline
-" create a symlink to this location
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Airline
+let g:airline_exclude_preview = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline_theme='powerlineish'
 
-" To make the powerline status line show up in non-split windows
+" Use powerline symbols
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+" To make the airline status show up in non-split windows
 set laststatus=2
 " Hide the default mode text below the Status line
 set noshowmode
 " Avoid junk characters in the Status line
-set fillchars+=stl:\ ,stlnc:\
+"set fillchars+=stl:\ ,stlnc:\
 set encoding=utf-8
-" Terminal timeout when pressing Escape key
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        autocmd InsertEnter * set timeoutlen=0
-        autocmd InsertLeave * set timeoutlen=1000
-    augroup END
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" End Powerline
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Begin Tmux
