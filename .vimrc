@@ -6,6 +6,21 @@
 execute pathogen#infect()
 execute pathogen#helptags()
 
+" Disable compatibility mode (VIM mode)
+set nocompatible
+
+" Most terminal emulators have mouse support
+if has('mouse')
+  set mouse=a
+endif
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
 " BEGIN DEFAULT OPENSUSE VIMRC
 " skeletons
 function! SKEL_spec()
@@ -172,7 +187,7 @@ func! VimDiffSetup()
     if len(&ft)
         call setwinvar(2/winnr(),'&ft',&ft)
     else
-        let &ft=getwinvar(2/winnr(),'&ft') 
+        let &ft=getwinvar(2/winnr(),'&ft')
     endif
 
     " Disable folding in diff mode
@@ -195,11 +210,19 @@ if has("gui_running")
     endif
 
     " Set GUI Font
-    if (match(hostname(), 'OptimusPrime') >= 0 ||
+    if has('mac')
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+        set lines=50
+    elseif (match(hostname(), 'OptimusPrime') >= 0 ||
     \   match(hostname(), 'WingSaber') >= 0 ||
     \   match(hostname(), 'StarScream') >= 0)
         set guifont=DejaVu\ Sans\ Mono\ 11
         set lines=50
+    elseif has('unix')
+        set guifont=DejaVu\ Sans\ Mono\ 11
+        set lines=50
+    else
+        " Godsave this OS :P
     endif
 endif
 colorscheme MolokaiSaber
