@@ -174,6 +174,10 @@ nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev
 " YouCompleteMe plugin
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
+" Disable the omnicomplete preview window (causes flickering with the
+" statusline)
+set completeopt-=preview
+
 " Indent Guide plugin
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
