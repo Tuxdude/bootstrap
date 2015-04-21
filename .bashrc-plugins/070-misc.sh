@@ -1,5 +1,5 @@
 #
-# Author: Ash <tuxdude.github@gmail.com>
+# Author: Ash <tuxdude.io@gmail.com>
 #
 
 # EDITOR env var used by multiple programs

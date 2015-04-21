@@ -1,5 +1,5 @@
 #
-# Author: Ash <tuxdude.github@gmail.com>
+# Author: Ash <tuxdude.io@gmail.com>
 #
 
 DELPHINUS_HOME="$HOME/git-repos/delphinus"

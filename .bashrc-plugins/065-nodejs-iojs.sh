@@ -1,6 +1,6 @@
 
 #
-# Author: Ash <tuxdude.github@gmail.com>
+# Author: Ash <tuxdude.io@gmail.com>
 #
 
 # Node Version Manager

@@ -1,5 +1,5 @@
 #
-# Author: Ash <tuxdude.github@gmail.com>
+# Author: Ash <tuxdude.io@gmail.com>
 #
 
 # Check if the first argument is a bash function

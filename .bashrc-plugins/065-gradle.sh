@@ -1,5 +1,5 @@
 #
-# Author: Ash <tuxdude.github@gmail.com>
+# Author: Ash <tuxdude.io@gmail.com>
 #
 
 # Enable gradle daemon to speed up gradle builds

@@ -1,5 +1,5 @@
 #
-# Author: Ash <tuxdude.github@gmail.com>
+# Author: Ash <tuxdude.io@gmail.com>
 #
 
 # List all opened files in the current directory showing relative path names

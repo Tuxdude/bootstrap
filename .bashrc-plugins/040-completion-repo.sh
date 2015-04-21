@@ -1,5 +1,5 @@
 #
-# Author: Ash <tuxdude.github@gmail.com>
+# Author: Ash <tuxdude.io@gmail.com>
 #
 # Obtained from: https://github.com/ParanoidAndroid/android_vendor_pa
 

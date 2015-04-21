@@ -1,6 +1,6 @@
 # Sample .profile for SuSE Linux
 # rewritten by Christian Steinruecken <cstein@suse.de>
-# Modified by Ash <tuxdude.github@gmail.com>
+# Modified by Ash <tuxdude.io@gmail.com>
 #
 # This file is read each time a login shell is started.
 # All other interactive shells will only read .bashrc; this is particularly

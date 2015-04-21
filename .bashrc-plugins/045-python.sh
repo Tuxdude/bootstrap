@@ -1,5 +1,5 @@
 #
-# Author: Ash <tuxdude.github@gmail.com>
+# Author: Ash <tuxdude.io@gmail.com>
 #
 
 PYTHON_PATHS="/opt/python/python3.3 /opt/python/python3.2 /opt/python/python3.1 /opt/python/python2.7 /opt/python/python2.6"

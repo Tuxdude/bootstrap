@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 #
-# Author: Ash <tuxdude.github@gmail.com>
+# Author: Ash <tuxdude.io@gmail.com>
 #
 
 # If reattach-to-user-namespace is available, make use of it

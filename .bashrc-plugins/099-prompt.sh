@@ -1,5 +1,5 @@
 #
-# Author: Ash <tuxdude.github@gmail.com>
+# Author: Ash <tuxdude.io@gmail.com>
 #
 
 if [ -z "$IN_CBE" ] && [ -n "$TMUX" ] && { hash powerline 2>/dev/null || [ -e $HOME/.local/bin/powerline ] ;}; then

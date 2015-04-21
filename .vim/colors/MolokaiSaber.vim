@@ -1,5 +1,5 @@
 " Vim color file
-" Maintainer:   Ash <tuxdude.github@gmail.com>
+" Maintainer:   Ash <tuxdude.io@gmail.com>
 " Last Change:  2012-06-08 18:00:09
 " Based off Molokai scheme by Tomas Restrepo
 " Vim color file
