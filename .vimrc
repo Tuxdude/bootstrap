@@ -2,14 +2,14 @@
 " Author: Ash<tuxdude.github@gmail.com>
 "
 
-" Execute pathogen as the first
+" Execute pathogen right away
 execute pathogen#infect()
 execute pathogen#helptags()
 
 " Disable compatibility mode (VIM mode)
 set nocompatible
 
-" Most terminal emulators have mouse support
+" Most terminal emulators have mouse support, enable it
 if has('mouse')
   set mouse=a
 endif
@@ -21,168 +21,43 @@ map Q gq
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
-" BEGIN DEFAULT OPENSUSE VIMRC
-" skeletons
-function! SKEL_spec()
-    0r /usr/share/vim/current/skeletons/skeleton.spec
-    language time en_US
-    if $USER != ''
-        let login = $USER
-    elseif $LOGNAME != ''
-        let login = $LOGNAME
-    else
-        let login = 'unknown'
-    endif
-    let newline = stridx(login, "\n")
-    if newline != -1
-        let login = strpart(login, 0, newline)
-    endif
-    if $HOSTNAME != ''
-        let hostname = $HOSTNAME
-    else
-        let hostname = system('hostname -f')
-        if v:shell_error
-            let hostname = 'localhost'
-        endif
-    endif
-    let newline = stridx(hostname, "\n")
-    if newline != -1
-        let hostname = strpart(hostname, 0, newline)
-    endif
-    exe "%s/specRPM_CREATION_DATE/" . strftime("%a\ %b\ %d\ %Y") . "/ge"
-    exe "%s/specRPM_CREATION_AUTHOR_MAIL/" . login . "@" . hostname . "/ge"
-    exe "%s/specRPM_CREATION_NAME/" . expand("%:t:r") . "/ge"
-    setf spec
-endfunction
-
-augroup SpecSetup
-    autocmd!
-    autocmd BufNewFile *.spec call SKEL_spec()
-augroup END
-
-" END DEFAULT OPENSUSE VIMRC
-
 " Enable filetype plugin
 filetype plugin on
+
 " Enable indentation
 filetype indent on
 
-set gfn=DejaVu\ Sans\ Mono
+" Soft tabs with 4 character width
 set expandtab
 set shiftwidth=4
 set softtabstop=4
 set smarttab
+
+" Always display ruler
 set ruler
+
+" Enable syntax
 syntax enable
-set hlsearch!
 
-" Taglist plugin
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_WinWidth = 50
-map <F4> :TlistToggle<cr>
-
-" Rebuild tags
-map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
-" Enable doxygen for c, cpp and idl files
-let g:load_doxygen_syntax=1
-let g:doxygen_enhanced_color=1
-
-" Disable P4 Active Status
-let g:p4EnableActiveStatus=0
-
-" CtrlP stuff
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_root_markers = ['build.config']
-let g:ctrlp_max_height = 25
-let g:ctrlp_max_files = 500000
-let g:ctrlp_regexp = 1
-let g:ctrlp_map = '<c-p>'
-"let g:ctrlp_user_command = 'find %s ( -type f -o -type l)'
-let g:ctrlp_lazy_update = 1
-let ctrlp_filter_greps = "".
-    \ "egrep -iv '\\.(" .
-    \ "jar|class|swp|swo|log|a|d|so|o|pyc|jpe?g|png|gif|mo|po" .
-    \ ")$' | " .
-    \ "egrep -v '^(\\./)?(" .
-    \ "deploy/|lib/|classes/|libs/|deploy/vendor/|.git/|.hg/|.svn/|.*migrations/" .
-    \ ")'"
-
-let ctrlp_git_command = "" .
-    \ "cd %s && git ls-files . -co --exclude-standard | " .
-    \ ctrlp_filter_greps
-
-let ctrlp_fallback_user_command = "" .
-    \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
-    \ ctrlp_filter_greps
-
-let g:ctrlp_user_command = ['.git/', ctrlp_git_command, ctrlp_fallback_user_command]
-
-let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
-
-let g:riv_fold_auto_update = 0
-
-augroup DisableRstFolding
-    autocmd!
-    autocmd Filetype rst setlocal nofoldenable
-augroup END
-
-func! MyCtrlPMappings()
-    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
-endfunc
-
-func! s:DeleteBuffer()
-    exec "bd" fnamemodify(getline('.')[2:], ':p')
-    exec "norm \<F5>"
-endfunc
-
-" Set Java syntax highlighting for *.aidl
-augroup AidlAsjava
-    autocmd!
-    autocmd BufReadPost *.aidl set syntax=java
-augroup END
-
-" Set Makefile syntax highlighting for *.inc
-augroup IncAsMakefiles
-    autocmd!
-    autocmd BufReadPost *.inc set syntax=make
-augroup END
-
-" Set Thrift syntax highlighting for *.thrift
-augroup ThriftAsThrift
-    autocmd!
-    autocmd BufReadPost *.thrift set syntax=thrift
-augroup END
-
-" Set Smali syntax highlighting for *.smali
-augroup SmaliAsSmali
-    autocmd!
-    autocmd BufReadPost *.smali set syntax=smali
-augroup END
-
-" NERDTree Plugin
-map <F3> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-" Mark Plugin
-let g:mwDefaultHighlightingPalette = 'extended'
-let g:mwAutoLoadMarks = 1
-let g:mwAutoSaveMarks = 1
-nmap <Plug>IgnoreMarkSearchNext <Plug>MarkSearchNext
-nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev
-
-" YouCompleteMe plugin
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" Enable Search highighting
+set hlsearch
 
 " Disable the omnicomplete preview window (causes flickering with the
 " statusline)
 set completeopt-=preview
 
-" Indent Guide plugin
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_start_level = 2
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size=1
+" Build room in Status line for plugins like airline, powerline to render
+" their stuff even in non-split windows
+set laststatus=2
+
+" Hide the default mode text below the Status line
+set noshowmode
+
+" Set character encoding to UTF8
+set encoding=utf-8
+
+" Persist the global variables across sessions
+set viminfo+=!
 
 " Setup for vimdiff
 " Call this only in diff mode
@@ -200,6 +75,7 @@ func! VimDiffSetup()
     set nofoldenable foldcolumn=0
 endfun
 
+" GUI related stuff
 if has("gui_running")
     if &diff
         set columns=200
@@ -229,38 +105,50 @@ if has("gui_running")
         " Godsave this OS :P
     endif
 endif
+
+" Set up colorscheme
 colorscheme MolokaiSaber
 
-" Airline
-let g:airline_exclude_preview = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline_theme='powerlineish'
+" Enable doxygen for c, cpp and idl files
+let g:load_doxygen_syntax=1
+let g:doxygen_enhanced_color=1
 
-" Use powerline symbols
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+" Disable P4 Active Status
+let g:p4EnableActiveStatus=0
 
-" To make the airline status show up in non-split windows
-set laststatus=2
-" Hide the default mode text below the Status line
-set noshowmode
-" Avoid junk characters in the Status line
-"set fillchars+=stl:\ ,stlnc:\
-set encoding=utf-8
+" Disable RST foldoing
+augroup DisableRstFolding
+    autocmd!
+    autocmd Filetype rst setlocal nofoldenable
+augroup END
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Begin Tmux
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set Java syntax highlighting for *.aidl
+augroup AidlAsjava
+    autocmd!
+    autocmd BufReadPost *.aidl set syntax=java
+augroup END
+
+" Set Makefile syntax highlighting for *.inc
+augroup IncAsMakefiles
+    autocmd!
+    autocmd BufReadPost *.inc set syntax=make
+augroup END
+
+" Set Thrift syntax highlighting for *.thrift
+augroup ThriftAsThrift
+    autocmd!
+    autocmd BufReadPost *.thrift set syntax=thrift
+augroup END
+
+" Set Smali syntax highlighting for *.smali
+augroup SmaliAsSmali
+    autocmd!
+    autocmd BufReadPost *.smali set syntax=smali
+augroup END
+
+"=============================================================================
+"                               BEGIN TMUX
+"=============================================================================
 if &term =~ '^screen'
     " Extended mouse mode in tmux
     set mouse+=a
@@ -290,11 +178,97 @@ if &term =~ '^screen'
     execute "set <F11>=\e[23;*~"
     execute "set <F12>=\e[24;*~"
 endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" End Tmux
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=============================================================================
+"                               END TMUX
+"=============================================================================
 
-" Persist the global variables across sessions
-set viminfo+=!
+"=============================================================================
+"                               BEGIN PLUGINS
+"=============================================================================
+
+" CtrlP Plugin stuff
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_root_markers = ['build.config']
+let g:ctrlp_max_height = 25
+let g:ctrlp_max_files = 500000
+let g:ctrlp_regexp = 1
+let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_user_command = 'find %s ( -type f -o -type l)'
+let g:ctrlp_lazy_update = 1
+let ctrlp_filter_greps = "".
+    \ "egrep -iv '\\.(" .
+    \ "jar|class|swp|swo|log|a|d|so|o|pyc|jpe?g|png|gif|mo|po" .
+    \ ")$' | " .
+    \ "egrep -v '^(\\./)?(" .
+    \ "deploy/|lib/|classes/|libs/|deploy/vendor/|.git/|.hg/|.svn/|.*migrations/" .
+    \ ")'"
+let ctrlp_git_command = "" .
+    \ "cd %s && git ls-files . -co --exclude-standard | " .
+    \ ctrlp_filter_greps
+let ctrlp_fallback_user_command = "" .
+    \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
+    \ ctrlp_filter_greps
+let g:ctrlp_user_command = ['.git/', ctrlp_git_command, ctrlp_fallback_user_command]
+let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
+func! MyCtrlPMappings()
+    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
+endfunc
+func! s:DeleteBuffer()
+    exec "bd" fnamemodify(getline('.')[2:], ':p')
+    exec "norm \<F5>"
+endfunc
+
+" Riv plugin
+let g:riv_fold_auto_update = 0
+
+" Taglist plugin
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let Tlist_WinWidth = 50
+map <F4> :TlistToggle<cr>
+" Rebuild tags
+map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+" NERDTree Plugin
+map <F3> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Mark Plugin
+let g:mwDefaultHighlightingPalette = 'extended'
+let g:mwAutoLoadMarks = 1
+let g:mwAutoSaveMarks = 1
+nmap <Plug>IgnoreMarkSearchNext <Plug>MarkSearchNext
+nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev
+
+" YouCompleteMe plugin
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" Indent Guide plugin
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_start_level = 2
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size=1
+
+" Airline - Setup using powerline symbols
+let g:airline_exclude_preview = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline_theme='powerlineish'
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+"============================================================================
+"                               END PLUGINS
+"============================================================================
+
+" Source the RPM related goodies
+source ~/.vim/.vimrc-rpm.vim
 
 " ~/.vimrc ends here
