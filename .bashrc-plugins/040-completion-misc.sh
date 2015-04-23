@@ -17,6 +17,11 @@ if hash npm 2> /dev/null; then
     source <(npm completion)
 fi
 
+# aws bash completion
+if hash aws_completer 2> /dev/null; then
+    complete -C "$(which aws_completer)" aws
+fi
+
 if [ -z "$IN_CBE" ]; then
 # Hook up git's bash-completion to gitmulti
     complete -o bashdefault -o default -o nospace -F _git gitmulti 2>/dev/null \
