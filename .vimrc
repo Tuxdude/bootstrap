@@ -249,7 +249,7 @@ let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_tree_indentation = 2
 " Make vimfiler always show the parent, and split the current window to
 " display the explorer
-map <F3> :VimFiler -toggle -parent -split<CR>
+map <F3> :VimFiler -explorer -explorer-columns=type -parent -toggle<CR>
 
 " Indent Guide plugin
 let g:indent_guides_auto_colors = 0
