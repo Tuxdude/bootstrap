@@ -228,10 +228,6 @@ map <F4> :TlistToggle<cr>
 " Rebuild tags
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-" NERDTree Plugin
-map <F3> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
 " Mark Plugin
 let g:mwDefaultHighlightingPalette = 'extended'
 let g:mwAutoLoadMarks = 1
@@ -241,6 +237,13 @@ nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev
 
 " YouCompleteMe plugin
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" vimfiler plugin
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_tree_indentation = 2
+" Make vimfiler always show the parent, and split the current window to
+" display the explorer
+map <F3> :VimFiler -toggle -parent -split<CR>
 
 " Indent Guide plugin
 let g:indent_guides_auto_colors = 0
