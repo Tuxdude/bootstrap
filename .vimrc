@@ -238,6 +238,12 @@ nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev
 " YouCompleteMe plugin
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
+" jedi plugin
+augroup JediDisablePreviewForPython
+    autocmd!
+    autocmd FileType python setlocal completeopt-=preview
+augroup END
+
 " vimfiler plugin
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_tree_indentation = 2
