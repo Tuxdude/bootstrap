@@ -251,6 +251,14 @@ let g:vimfiler_tree_indentation = 2
 " display the explorer
 map <F3> :VimFiler -explorer -explorer-columns=type -parent -toggle<CR>
 
+" buffergator plugin
+let g:buffergator_suppress_keymaps = 1
+let g:buffergator_autodismiss_on_select = 0
+let g:buffergator_autoexpand_on_split = 0
+let g:buffergator_autoupdate = 1
+let g:buffergator_show_full_directory_path = 0
+nmap <Leader>b :BuffergatorToggle<CR>
+
 " Indent Guide plugin
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
