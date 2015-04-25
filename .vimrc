@@ -93,11 +93,6 @@ if has("gui_running")
     if has('mac')
         set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
         set lines=50
-    elseif (match(hostname(), 'OptimusPrime') >= 0 ||
-    \   match(hostname(), 'WingSaber') >= 0 ||
-    \   match(hostname(), 'StarScream') >= 0)
-        set guifont=DejaVu\ Sans\ Mono\ 11
-        set lines=50
     elseif has('unix')
         set guifont=DejaVu\ Sans\ Mono\ 11
         set lines=50
