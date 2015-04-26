@@ -68,6 +68,9 @@ if has("persistent_undo")
     set undodir=~/.vimundo
 endif
 
+" New windows don't cause all windows to be resized to equal sizes
+set noequalalways
+
 " Setup for vimdiff
 " Call this only in diff mode
 func! VimDiffSetup()
@@ -86,8 +89,9 @@ endfun
 
 " GUI related stuff
 if has("gui_running")
+    " Diff setup
     if &diff
-        set columns=200
+"        set columns=200
 
         " Setup on loading vimdiff
         augroup SmartDiffSetup
@@ -95,30 +99,32 @@ if has("gui_running")
             autocmd VimEnter * :call VimDiffSetup()
         augroup END
     else
-        set columns=100
+"        set columns=100
     endif
 
     " Set GUI Font
     if has('mac')
         set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
-        set lines=50
     elseif has('unix')
         set guifont=DejaVu\ Sans\ Mono\ 11
-        set lines=50
     else
         " Godsave this OS :P
     endif
+
+    " Set geometry
+    set columns=250
+    set lines=70
 endif
 
 " Set up colorscheme
 colorscheme MolokaiSaber
 
 " Enable doxygen for c, cpp and idl files
-let g:load_doxygen_syntax=1
-let g:doxygen_enhanced_color=1
+let g:load_doxygen_syntax = 1
+let g:doxygen_enhanced_color = 1
 
 " Disable P4 Active Status
-let g:p4EnableActiveStatus=0
+let g:p4EnableActiveStatus = 0
 
 " Disable RST foldoing
 augroup DisableRstFolding
@@ -240,8 +246,8 @@ let g:easytags_languages = {
 let g:mwDefaultHighlightingPalette = 'extended'
 let g:mwAutoLoadMarks = 1
 let g:mwAutoSaveMarks = 1
-nmap <Plug>IgnoreMarkSearchNext <Plug>MarkSearchNext
-nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev
+nnoremap <Plug>IgnoreMarkSearchNext <Plug>MarkSearchNext
+nnoremap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev
 
 " YouCompleteMe plugin
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
