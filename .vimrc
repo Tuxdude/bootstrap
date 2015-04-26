@@ -182,12 +182,13 @@ endif
 "=============================================================================
 
 " CtrlP Plugin stuff
+let g:ctrlp_map = '<C-P>'
+let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_root_markers = ['build.config']
 let g:ctrlp_max_height = 25
 let g:ctrlp_max_files = 500000
 let g:ctrlp_regexp = 1
-let g:ctrlp_map = '<c-p>'
 "let g:ctrlp_user_command = 'find %s ( -type f -o -type l)'
 let g:ctrlp_lazy_update = 1
 let ctrlp_filter_greps = "".
@@ -204,14 +205,8 @@ let ctrlp_fallback_user_command = "" .
     \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
     \ ctrlp_filter_greps
 let g:ctrlp_user_command = ['.git/', ctrlp_git_command, ctrlp_fallback_user_command]
-let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
-func! MyCtrlPMappings()
-    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
-endfunc
-func! s:DeleteBuffer()
-    exec "bd" fnamemodify(getline('.')[2:], ':p')
-    exec "norm \<F5>"
-endfunc
+call ctrlp_bdelete#init()
+nnoremap <silent> <C-L> :CtrlP<CR>
 
 " Riv plugin
 let g:riv_fold_auto_update = 0
@@ -254,14 +249,6 @@ let g:vimfiler_tree_indentation = 2
 " Make vimfiler always show the parent, and split the current window to
 " display the explorer
 map <F3> :VimFiler -explorer -explorer-columns=type -parent -toggle<CR>
-
-" buffergator plugin
-let g:buffergator_suppress_keymaps = 1
-let g:buffergator_autodismiss_on_select = 0
-let g:buffergator_autoexpand_on_split = 0
-let g:buffergator_autoupdate = 1
-let g:buffergator_show_full_directory_path = 0
-nmap <Leader>b :BuffergatorToggle<CR>
 
 " Indent Guide plugin
 let g:indent_guides_auto_colors = 0

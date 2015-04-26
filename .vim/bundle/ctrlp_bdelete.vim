@@ -1,0 +1,1 @@
+/data/dev-stuff/git-repos/vim-scripts/ctrlp_bdelete.vim/
