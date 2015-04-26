@@ -243,12 +243,9 @@ augroup JediDisablePreviewForPython
     autocmd FileType python setlocal completeopt-=preview
 augroup END
 
-" vimfiler plugin
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_tree_indentation = 2
-" Make vimfiler always show the parent, and split the current window to
-" display the explorer
-map <F3> :VimFiler -explorer -explorer-columns=type -parent -toggle<CR>
+" nerdtree plugin
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+nnoremap <F3> :NERDTreeToggle<CR>
 
 " Indent Guide plugin
 let g:indent_guides_auto_colors = 0
