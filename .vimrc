@@ -14,6 +14,9 @@ if has('mouse')
   set mouse=a
 endif
 
+" Use ',' key as the leader instead of '\'
+let mapleader = ','
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
