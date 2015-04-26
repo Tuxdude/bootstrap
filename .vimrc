@@ -59,6 +59,12 @@ set encoding=utf-8
 " Persist the global variables across sessions
 set viminfo+=!
 
+" Enable persistent undo across vim sessions
+if has("persistent_undo")
+    set undofile
+    set undodir=~/.vimundo
+endif
+
 " Setup for vimdiff
 " Call this only in diff mode
 func! VimDiffSetup()
@@ -252,6 +258,11 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size=1
+
+" undotree plugin
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_SplitWidth = 25
+nnoremap <silent> <Leader>u :UndotreeToggle<CR>
 
 " Airline - Setup using powerline symbols
 let g:airline_exclude_preview = 1
