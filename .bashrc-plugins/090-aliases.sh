@@ -27,6 +27,7 @@ alias picocom='picocom -b 115200'
 alias hd='od -Ax -tx1z -v'
 alias scpresume='rsync --partial --progress --archive --human-readable --compress --rsh=ssh --verbose'
 alias diff='colordiff'
+alias profilevim='vim --cmd "profile start profile.log" --cmd "profile func *" --cmd "profile file *" -c "profdel func *" -c "profdel file *" -c "qa!"'
 
 # ack exists as 'ack-grep' on linux but as 'ack' on OS X
 if [[ $OSTYPE == linux* ]]; then
