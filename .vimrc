@@ -216,12 +216,21 @@ endfunc
 " Riv plugin
 let g:riv_fold_auto_update = 0
 
-" Taglist plugin
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_WinWidth = 50
-map <F4> :TlistToggle<cr>
-" Rebuild tags
-map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+" tagbar plugin
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
+let g:tagbar_map_prevtag = "<C-M>"
+
+" easytags plugin
+let g:easytags_async = 1
+let g:easytags_languages = {
+\   'javascript': {
+\       'cmd': 'jsctags',
+\       'args': [],
+\       'fileoutput_opt': '-f',
+\       'stdout_opt': '-f-',
+\       'recurse_flag': '-R'
+\   }
+\}
 
 " Mark Plugin
 let g:mwDefaultHighlightingPalette = 'extended'
