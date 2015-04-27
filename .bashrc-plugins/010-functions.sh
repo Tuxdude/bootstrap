@@ -49,18 +49,3 @@ lastmod() {
         find $1 -type f -print0 | xargs -0 stat --format '%Y :%y %n' | sort -nr | cut -d: -f2- | head
     fi
 }
-
-# List the git repository URLs, for all the repositories present
-# under a given directory
-list_all_vim_plugin_repo_urls() {
-    for dir in ~/.vim/bundle/*/; do
-        if [ -d "$dir/.git" ]; then
-            git -C "$dir" config remote.origin.url
-        fi
-    done
-}
-
-# Write the vim plugin repo info to the config file
-update_vim_plugin_repo_info() {
-    list_all_vim_plugin_repo_urls | sort > ~/.vim/pluginlist.config
-}

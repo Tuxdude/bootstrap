@@ -6,6 +6,8 @@
 !/.vim/*
 # Exclude the .netwrhist which gets updated
 /.vim/.netrwhist
+# Exclude the bundle directory containing all the plugins
+/.vim/bundle
 
 # Except .bashrc-plugins
 !/.bashrc-plugins/
