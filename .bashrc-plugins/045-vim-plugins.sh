@@ -63,7 +63,23 @@ vim_plugins_sync_symlinks() {
     done
 }
 
-# Use the config file to setup the plugins and the symlinks
+# Setup the vim YCM plugin if required
+# Compiles ycm_core with clang completion and go completion support
+# Assumes all the system dependencies have already been installed
+vim_plugins_install_ycm() {
+    ycm_dir="$VIM_PLUGINS_DIR/YouCompleteMe"
+    if [ ! -f "$ycm_dir/third_party/ycmd/ycm_core.so" ]; then
+        echo "Setting up clang completion for YCM"
+        pushd $VIM_PLUGINS_DIR/YouCompleteMe
+        git submodule update --init --recursive
+        ./install.sh --clang-completer --system-libclang --gocode-completer
+        popd
+        echo "Done setting up clang completion for YCM"
+    fi
+}
+
+# Use the config file to setup the plugins, the symlinks and any additional
+# installation if required
 vim_plugins_setup() {
-    vim_plugins_update && vim_plugins_sync_symlinks
+    vim_plugins_update && vim_plugins_sync_symlinks && vim_plugins_install_ycm
 }
