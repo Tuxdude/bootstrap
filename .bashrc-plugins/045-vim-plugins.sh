@@ -50,7 +50,7 @@ vim_plugins_sync_symlinks() {
     mkdir -p $VIM_BUNDLE_DIR
 
     # First remove all existing symlinks under $VIM_BUNDLE_DIR
-    find $VIM_BUNDLE_DIR -maxdepth 1 -type l -print0 | xargs -0 --no-run-if-empty -n 1 rm -f
+    find $VIM_BUNDLE_DIR -maxdepth 1 -type l -print0 | xargs -0 -n 1 rm -f 2> /dev/null || true
 
     for repo in $(cat ~/.vim/pluginlist.config); do
         pluginDirName="$(basename $repo)"
