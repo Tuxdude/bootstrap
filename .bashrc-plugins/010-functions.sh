@@ -62,5 +62,5 @@ list_all_vim_plugin_repo_urls() {
 
 # Write the vim plugin repo info to the config file
 update_vim_plugin_repo_info() {
-    list_all_vim_plugin_repo_urls > ~/.vim/pluginlist.config
+    list_all_vim_plugin_repo_urls | sort > ~/.vim/pluginlist.config
 }
