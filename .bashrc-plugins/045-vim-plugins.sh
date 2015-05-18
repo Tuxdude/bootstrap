@@ -78,8 +78,20 @@ vim_plugins_install_ycm() {
     fi
 }
 
+# Setup the vim tern plugin
+vim_plugins_install_tern() {
+    tern_dir="$VIM_PLUGINS_DIR/tern_for_vim"
+    if [ ! -f "$tern_dir/node_modules/tern/bin/tern" ]; then
+        echo "Setting up tern_for_vim"
+        pushd "$VIM_PLUGINS_DIR/tern_for_vim"
+        npm install
+        popd
+        echo "Done setting up tern_for_vim"
+    fi
+}
+
 # Use the config file to setup the plugins, the symlinks and any additional
 # installation if required
 vim_plugins_setup() {
-    vim_plugins_update && vim_plugins_sync_symlinks && vim_plugins_install_ycm
+    vim_plugins_update && vim_plugins_sync_symlinks && vim_plugins_install_ycm && vim_plugins_install_tern
 }
