@@ -156,6 +156,12 @@ augroup SmaliAsSmali
     autocmd BufReadPost *.smali set syntax=smali
 augroup END
 
+" Set 2 spaces for Javascript
+augroup JavascriptSoftTabs
+    autocmd!
+    autocmd Filetype javascript setlocal shiftwidth=2 softtabstop=2 expandtab
+augroup END
+
 "=============================================================================
 "                               BEGIN TMUX
 "=============================================================================
