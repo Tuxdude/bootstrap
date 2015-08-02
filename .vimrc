@@ -6,6 +6,9 @@
 execute pathogen#infect()
 execute pathogen#helptags()
 
+" Set the shell (to avoid errors)
+set shell=/bin/sh
+
 " Disable compatibility mode (VIM mode)
 set nocompatible
 
