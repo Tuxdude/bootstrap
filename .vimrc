@@ -165,6 +165,13 @@ augroup JavascriptSoftTabs
     autocmd Filetype javascript setlocal shiftwidth=2 softtabstop=2 expandtab
 augroup END
 
+" go fmt uses hard tabs for formatting
+" Just in vim use 4 spaces but file still will have hard tabs
+augroup GoFmtTabs
+    autocmd!
+    au BufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
+augroup END
+
 "=============================================================================
 "                               BEGIN TMUX
 "=============================================================================
