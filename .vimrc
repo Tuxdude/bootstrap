@@ -162,7 +162,7 @@ augroup END
 " Set 2 spaces for Javascript
 augroup JavascriptSoftTabs
     autocmd!
-    autocmd Filetype javascript setlocal shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype javascript setlocal shiftwidth=4 softtabstop=4 expandtab
 augroup END
 
 " go fmt uses hard tabs for formatting
