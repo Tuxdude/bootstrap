@@ -7,8 +7,13 @@
 
 if [[ $OSTYPE == darwin* ]]; then
     REQUESTED_JAVA_VERSION="1.7"
+    FALLBACK_JAVA_HOME="$HOME/jdk1.7.0_80.jdk/Contents/Home"
     if POSSIBLE_JAVA_HOME="$(/usr/libexec/java_home -v $REQUESTED_JAVA_VERSION 2>/dev/null)"; then
         export JAVA_HOME="$POSSIBLE_JAVA_HOME"
+        export JAVA_TOOL_OPTIONS="-Dapple.awt.UIElement=true"
+    elif [ -e "$FALLBACK_JAVA_HOME" ]; then
+        export JAVA_HOME="$FALLBACK_JAVA_HOME"
+        export JAVA_TOOL_OPTIONS="-Dapple.awt.UIElement=true"
     else
         echo "Did not find any installed JDK for version $REQUESTED_JAVA_VERSION"
     fi
