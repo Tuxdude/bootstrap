@@ -68,10 +68,15 @@ vim_plugins_sync_symlinks() {
 # Assumes all the system dependencies have already been installed
 vim_plugins_install_ycm() {
     ycm_dir="$VIM_PLUGINS_DIR/YouCompleteMe"
+
+    # Update all the submodules and initialize them
+    pushd $ycm_dir
+    git submodule update --init --recursive
+    popd
+
     if [ ! -f "$ycm_dir/third_party/ycmd/ycm_core.so" ]; then
         echo "Setting up clang completion for YCM"
-        pushd $VIM_PLUGINS_DIR/YouCompleteMe
-        git submodule update --init --recursive
+        pushd $ycm_dir
         ./install.sh --clang-completer --system-libclang --gocode-completer
         popd
         echo "Done setting up clang completion for YCM"
