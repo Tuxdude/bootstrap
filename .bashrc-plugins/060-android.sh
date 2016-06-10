@@ -10,4 +10,6 @@ elif [ "$HOSTNAME" == "Suse1520" ]; then
     ANDROID_ROOT=/misc/android
 fi
 
+export ANDROID_HVPROTO=ddm
+
 export USE_CCACHE=1
