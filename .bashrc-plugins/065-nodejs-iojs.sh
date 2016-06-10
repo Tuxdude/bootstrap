@@ -5,6 +5,8 @@
 
 # Node Version Manager
 if hash brew 2> /dev/null; then
+    # Explicitly set the NVM_DIR to avoid confusing nvm
+    export NVM_DIR="$(readlink -f $(brew --prefix nvm))"
     # Bootstrap nvm
     source "$(brew --prefix nvm)/nvm.sh"
     # Bash completion for nvm
