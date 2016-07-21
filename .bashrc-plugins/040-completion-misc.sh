@@ -31,3 +31,8 @@ if [ -z "$IN_CBE" ]; then
     complete -o bashdefault -o default -o nospace -F _scp scpresume 2>/dev/null \
             || complete -o default -o nospace -F _scp scpresume
 fi
+
+# kubectl bash completion
+if hash kubectl 2> /dev/null; then
+    source <(kubectl completion bash)
+fi
