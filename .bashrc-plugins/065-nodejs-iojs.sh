@@ -25,6 +25,9 @@ if hash brew 2> /dev/null; then
 
         # Do not reload nvm again
         export NVM_LOADED=1
+
+        # Initialize npm bash completion
+        source <(npm completion)
     }
 
     for node_cmd in "${NODE_GLOBALS[@]}"; do

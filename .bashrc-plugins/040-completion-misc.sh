@@ -12,11 +12,6 @@ if hash pip 2> /dev/null; then
     eval "$(pip completion --bash)"
 fi
 
-# npm bash completion
-if hash npm 2> /dev/null; then
-    source <(npm completion)
-fi
-
 # aws bash completion
 if hash aws_completer 2> /dev/null; then
     complete -C "$(which aws_completer)" aws
