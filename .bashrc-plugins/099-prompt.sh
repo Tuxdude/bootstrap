@@ -2,7 +2,7 @@
 # Author: Ash <tuxdude.io@gmail.com>
 #
 
-if [ -z "$IN_CBE" ] && [ -n "$TMUX" ] && { hash powerline 2>/dev/null || [ -e $HOME/.local/bin/powerline ] ;}; then
+if [ -n "$TMUX" ] && { hash powerline 2>/dev/null || [ -e $HOME/.local/bin/powerline ] ;}; then
     export USE_POWERLINE="1"
     export POWERLINE_ENVS="PWD VIRTUAL_ENV SANDBOX_ID BRANCHNAME FLAVOR"
     if [ "$OVERRIDE_CUSTOM_PROMPT" != "1" ]; then
