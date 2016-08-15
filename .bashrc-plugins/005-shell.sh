@@ -2,6 +2,10 @@
 # Author: Ash <tuxdude.io@gmail.com>
 #
 
+# Set the SHELL environment variable correctly
+# Since we use bash always, $BASH is reliable
+export SHELL="$BASH"
+
 # Append to history
 shopt -s histappend
 
