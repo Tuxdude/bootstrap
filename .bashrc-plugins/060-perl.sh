@@ -4,5 +4,7 @@
 
 # Make perl modules installed by brew accessible to all
 if [[ $OSTYPE == darwin* ]]; then
-    export PERL5LIB="/usr/local/lib/perl5/site_perl/"
+    if hash brew 2>/dev/null; then
+        export PERL5LIB="$(brew --prefix)/lib/perl5/site_perl"
+    fi
 fi
