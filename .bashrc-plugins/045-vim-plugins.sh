@@ -25,10 +25,18 @@ vim_plugins_config_update() {
     vim_plugins_list_repo_urls | sort -n > ~/.vim/pluginlist.config
 }
 
+vim_plugins_get_repos() {
+    if [ -n "$VIM_PLUGINS_USE_HTTPS_URLS" ]; then
+        cat ~/.vim/pluginlist.config | sed 's/github:/https:\/\/github.com\//g'
+    else
+        cat ~/.vim/pluginlist.config
+    fi
+}
+
 # Download/Update all the vim plugins
 vim_plugins_update() {
     mkdir -p $VIM_PLUGINS_DIR
-    for repo in $(cat ~/.vim/pluginlist.config); do
+    for repo in $(vim_plugins_get_repos); do
         pluginDirName="$(basename $repo)"
         pluginFullPath="$VIM_PLUGINS_DIR/$pluginDirName"
         if [ -d "$pluginFullPath" ]; then
@@ -52,7 +60,7 @@ vim_plugins_sync_symlinks() {
     # First remove all existing symlinks under $VIM_BUNDLE_DIR
     find $VIM_BUNDLE_DIR -maxdepth 1 -type l -print0 | xargs -0 -n 1 rm -f 2> /dev/null || true
 
-    for repo in $(cat ~/.vim/pluginlist.config); do
+    for repo in $(vim_plugins_get_repos); do
         pluginDirName="$(basename $repo)"
         if [ -d "$VIM_PLUGINS_DIR/$pluginDirName" ]; then
             echo "Symlinking $VIM_BUNDLE_DIR/$pluginDirName -> $VIM_PLUGINS_DIR/$pluginDirName"
@@ -98,5 +106,5 @@ vim_plugins_install_tern() {
 # Use the config file to setup the plugins, the symlinks and any additional
 # installation if required
 vim_plugins_setup() {
-    vim_plugins_update && vim_plugins_sync_symlinks && vim_plugins_install_ycm && vim_plugins_install_tern
+    vim_plugins_update && vim_plugins_sync_symlinks && vim_plugins_install_tern
 }
