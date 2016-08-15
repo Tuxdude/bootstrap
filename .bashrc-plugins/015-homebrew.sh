@@ -5,8 +5,10 @@
 # Homebrew (if it exists) will be installed only in one of these 2 locations
 if [ -x /usr/local/bin/brew ]; then
     homebrew_home="/usr/local"
-elif [ -x $HOME/.homebrew/bin/brew ]; then
+elif [ -x "$HOME/.homebrew/bin/brew" ]; then
     homebrew_home="$HOME/.homebrew"
+elif [ -x "$HOME/.linuxbrew/bin/brew" ]; then
+    homebrew_home="$HOME/.linuxbrew"
 fi
 
 # If Homebrew was detected, add its bin directory to PATH
