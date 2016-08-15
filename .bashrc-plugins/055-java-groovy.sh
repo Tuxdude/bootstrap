@@ -19,5 +19,7 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
 
     # Use Groovy from homebrew
-    export GROOVY_HOME="/usr/local/opt/groovy/libexec"
+    if hash brew 2>/dev/null; then
+        export GROOVY_HOME="$(brew --prefix)/opt/groovy/libexec"
+    fi
 fi
