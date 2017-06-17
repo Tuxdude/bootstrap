@@ -2,7 +2,7 @@
 # Author: Ash <tuxdude.io@gmail.com>
 #
 
-# Homebrew (if it exists) will be installed only in one of these 2 locations
+# Homebrew (if it exists) will be installed only in one of these 3 locations
 if [ -x /usr/local/bin/brew ]; then
     homebrew_home="/usr/local"
 elif [ -x "$HOME/.homebrew/bin/brew" ]; then
@@ -34,4 +34,8 @@ if [ -n "$homebrew_home" ]; then
     fi
 
     unset homebrew_home homebrew_bin
+
+    # Do not send any analytics
+    export HOMEBREW_NO_ANALYTICS=1
+    brew analytics off
 fi
