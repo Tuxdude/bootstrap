@@ -23,3 +23,14 @@ if [[ $OSTYPE == darwin* ]]; then
         export GROOVY_HOME="$(brew --prefix)/opt/groovy/libexec"
     fi
 fi
+
+# Helper to format java code.
+function java_format() {
+    JAVA_FORMAT_DOWNLOAD_URL="https://github.com/google/google-java-format/releases/download/google-java-format-1.3/google-java-format-1.3-all-deps.jar"
+    JAVA_FORMAT_DEST_DIR="$HOME/.config/lib/java"
+    JAVA_FORMAT_DEST_FILE="google-java-format-1.3-all-deps.jar"
+    if [ ! -f $JAVA_FORMAT_DEST_DIR/$JAVA_FORMAT_DEST_FILE ]; then
+      mkdir -p $JAVA_FORMAT_DEST_DIR && wget -O $JAVA_FORMAT_DEST_DIR/$JAVA_FORMAT_DEST_FILE $JAVA_FORMAT_DOWNLOAD_URL
+    fi
+    java -jar $JAVA_FORMAT_DEST_DIR/$JAVA_FORMAT_DEST_FILE --replace $@
+}
