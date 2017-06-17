@@ -56,6 +56,7 @@ tmux_start_dev_station() {
     fi
 
     if tmux -q has-session -t "$session_name" 2>/dev/null; then
+        tmux_with_ssh_auth_sock "$ssh_auth_sock_updated" detach-client -s "$session_name" 2>/dev/null || true
         tmux_with_ssh_auth_sock "$ssh_auth_sock_updated" -2 attach-session -t "$session_name"
     else
         # Window 0
