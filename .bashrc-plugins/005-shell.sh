@@ -9,8 +9,9 @@ export SHELL="$BASH"
 # Append to history
 shopt -s histappend
 
-HISTSIZE=10000
-HISTFILESIZE=20000
+# Unlimited history
+HISTSIZE=-1
+HISTFILESIZE=-1
 
 # Update LINES and COLUMNS to reflect the window size after each command
 shopt -s checkwinsize
