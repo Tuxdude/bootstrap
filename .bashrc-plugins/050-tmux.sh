@@ -79,6 +79,12 @@ tmux_start_dev_station() {
         # Window 6
         tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
 
+        # Window 7
+        tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
+
+        # Window 8
+        tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
+
         # Select Window 0
         tmux_with_ssh_auth_sock "$ssh_auth_sock_updated" select-window -t "$session_name":0
 
