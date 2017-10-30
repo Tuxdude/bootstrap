@@ -1,0 +1,53 @@
+[color]
+ui.warning = red bold
+
+# uncomment to disable command output pagination
+# (see 'hg help pager' for details)
+# paginate = never
+
+[extensions]
+churn =
+evolve =
+
+[alias]
+tree = log -G --template tree
+
+[color]
+termsaber.tag = yellow bold
+termsaber.bookmark = green bold
+termsaber.branch = cyan
+termsaber.nodeid = red
+termsaber.rev = red
+termsaber.date = magenta
+termsaber.author = blue
+termsaber.phase_public = green
+termsaber.phase_draft = blue
+termsaber.phase_secret = red
+
+[templatealias]
+color_tag(text) = '{label("termsaber.tag", text)}'
+color_bookmark(text) = '{label("termsaber.bookmark", text)}'
+color_branch(text) = '{label("termsaber.branch", text)}'
+color_nodeid(text) = '{label("termsaber.nodeid", text)}'
+color_rev(text) = '{label("termsaber.rev", text)}'
+color_date(text) = '{label("termsaber.date", text)}'
+color_author(text) = '{label("termsaber.author", text)}'
+color_phase(text) = '{label("termsaber.phase_{phase}", text)}'
+tree_tags = '{if(tags,
+                 "{tags % \"[{tag|color_tag}]──\"}")}'
+tree_bookmarks = '{if(bookmarks,
+                      "{bookmarks %
+                        \"[{bookmark|color_bookmark}{ifeq(bookmark, active, '*'|color_bookmark)}]──\"
+                      }")}'
+tree_branch = '{ifeq(branch, 'default', '', '{" (on branch {branch})"|color_branch}')}'
+tree_phase = '[{phase|color_phase}]'
+tree_nodeid = '{shortest(node, 6)|color_nodeid}'
+tree_rev = '{"(r{rev})"|color_rev}'
+tree_date = '{"({date|age})"|color_date}'
+tree_author = '{author|person|color_author}'
+tree_desc = '{desc|firstline}'
+
+[templates]
+tree = '─{tree_tags}{tree_bookmarks}{tree_nodeid}─{tree_rev}─{tree_phase} {tree_date}{tree_branch} {tree_author} {tree_desc}\n'
+
+%include .hgrc-userinfo
