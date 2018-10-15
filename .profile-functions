@@ -1,0 +1,42 @@
+#
+# Author: Ash <tuxdude.io@gmail.com>
+#
+
+# Usage: path_remove $PATH_VAR $path_to_remove
+path_remove() {
+    sep="$IFS"
+    IFS=':'
+    t=($1)
+    n=${#t[*]}
+    a=()
+    for (( i=0; i<n; i++ )); do
+        [ "${t[i]}" != "$2" ] && a[i]="${t[i]}"
+    done
+    echo "${a[*]}"
+    IFS="$sep"
+}
+
+# Usage: path_remove $PATH_VAR $wildcard
+path_remove_wildcard() {
+    sep="$IFS"
+    IFS=':'
+    t=($1)
+    n=${#t[*]}
+    a=()
+    for (( i=0; i<n; i++ )); do
+        p="${t[i]%%$2}"
+        [ "${p}" ] && a[i]="${p}"
+    done
+    echo "${a[*]}"
+    IFS="$sep"
+}
+
+# Usage: paths_remove $PATH_VAR $path1 $path2 $path3 ...
+paths_remove() {
+    local reduced_path="$1"
+    shift
+    for path_to_remove in "$@"; do
+        reduced_path=$(path_remove "$reduced_path" $path_to_remove)
+    done
+    echo "$reduced_path"
+}

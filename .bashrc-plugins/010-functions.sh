@@ -8,21 +8,6 @@ _is_function () {
     return $?
 }
 
-# Usage: path_remove $PATH_VAR $wildcard
-path_remove() {
-    sep="$IFS"
-    IFS=':'
-    t=($1)
-    n=${#t[*]}
-    a=()
-    for (( i=0; i<n; i++ )); do
-        p="${t[i]%%$2}"
-        [ "${p}" ] && a[i]="${p}"
-    done
-    echo "${a[*]}"
-    IFS="$sep"
-}
-
 # Set the terminal window title
 set_title() {
     if [ -z "$1" ]; then

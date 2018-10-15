@@ -1,37 +1,30 @@
-# Sample .profile for SuSE Linux
-# rewritten by Christian Steinruecken <cstein@suse.de>
-# Modified by Ash <tuxdude.io@gmail.com>
 #
-# This file is read each time a login shell is started.
-# All other interactive shells will only read .bashrc; this is particularly
-# important for language settings, see below.
-
-if [ -n "$PROFILE_SOURCED" ]; then
-    return
-fi
-
-test -z "$PROFILEREAD" && . /etc/profile || true
-
-# Most applications support several languages for their output.
-# To make use of this feature, simply uncomment one of the lines below or
-# add your own one (see /usr/share/locale/locale.alias for more codes)
-# This overwrites the system default set in /etc/sysconfig/language
-# in the variable RC_LANG.
+# Author: Ash <tuxdude.io@gmail.com>
 #
-#export LANG=de_DE.UTF-8	# uncomment this line for German output
-#export LANG=fr_FR.UTF-8	# uncomment this line for French output
-#export LANG=es_ES.UTF-8	# uncomment this line for Spanish output
+
+# This file is read only by the login shell. Interactive
+# shells on the other hand will onyl read .bashrc.
+
+# This file is idempotent and can be invoked multiple times
+# without breaking anything.
+
+test -z "$PROFILEREAD" && source /etc/profile || true
+
 export LANG=en_US.UTF-8
 
+source $HOME/.profile-functions
+
+# It is possible that /etc/profile overwrote $PATH entirely at this point
+# So always update $PATH as required.
 if [[ $OSTYPE == linux* ]]; then
-    export PATH="$HOME/.local/bin:$HOME/.local/sbin:$JAVA_HOME/bin:$PATH:/sbin:/usr/sbin:/usr/games"
+    reduced_paths="$(paths_remove $PATH $HOME/.local/bin $HOME/.local/sbin $JAVA_HOME/bin /sbin /usr/sbin /usr/games)"
+    export PATH="$HOME/.local/bin:$HOME/.local/sbin:$JAVA_HOME/bin:$reduced_paths:/sbin:/usr/sbin:/usr/games"
 elif [[ $OSTYPE == darwin* ]]; then
-    export PATH="$HOME/.local/bin:$HOME/.local/sbin:$PATH:/sbin:/usr/sbin:/usr/games"
+    reduced_paths="$(paths_remove $PATH $HOME/.local/bin $HOME/.local/sbin /sbin /usr/sbin /usr/games)"
+    export PATH="$HOME/.local/bin:$HOME/.local/sbin:$reduced_paths:/sbin:/usr/sbin:/usr/games"
 else
     echo "Unknown OS"
 fi
 
-export MANPATH="$MANPATH:$HOME/.local/share/man"
-
-# Set the flag that .profile was sourced
-export PROFILE_SOURCED=1
+# Same goes for $MANPATH.
+export MANPATH="$(path_remove $MANPATH $HOME/.local/share/man):$HOME/.local/share/man"
