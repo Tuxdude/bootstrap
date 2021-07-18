@@ -6,7 +6,7 @@
     path            = .gitconfig-userinfo
 
 [color]
-    ui              = true
+    ui              = always
 
 [color "status"]
     header          = blue
