@@ -2,6 +2,8 @@
 # Author: Ash <tuxdude.io@gmail.com>
 #
 
+eval $(ssh-agent -s) >/dev/null
+
 # Store tmux envs
 store_tmux_envs() {
     if [ -n "$TMUX" -a -n "$TMUX_PANE" ]; then
