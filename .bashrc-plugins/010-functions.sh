@@ -23,7 +23,17 @@ set_title() {
 
 # Sort du's output by size
 duf() {
-    du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
+    du -c -sk "$@" | sort -n | while read size fname; do
+        for unit in k M G T P E Z Y; do
+            if [ $size -lt 1024 ]; then
+                echo -e "${size}${size_fraction}${unit}\t${fname}"
+                break;
+            fi
+            frac=$(echo "scale=0; $size % 1024" | bc)
+            size_fraction=$(echo "scale=3; $frac / 1024" | bc)
+            size=$(echo "scale=0; $size / 1024" | bc)
+        done
+    done
 }
 
 # Find last modified files
