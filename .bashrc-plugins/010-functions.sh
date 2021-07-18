@@ -44,3 +44,11 @@ lastmod() {
         find $1 -type f -print0 | xargs -0 stat --format '%Y :%y %n' | sort -nr | cut -d: -f2- | head
     fi
 }
+
+listparts() {
+  lsblk --tree --output NAME,TRAN,TYPE,PTTYPE,SIZE,PARTLABEL,PARTUUID,FSTYPE,MOUNTPOINT,FSAVAIL,FSUSE%,LABEL,UUID $@
+}
+
+listdisks() {
+  lsblk --nodeps --output NAME,TYPE,TRAN,SUBSYSTEMS,VENDOR,MODEL,SERIAL,SIZE,STATE $@
+}
