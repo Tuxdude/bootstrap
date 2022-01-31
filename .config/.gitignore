@@ -1,5 +1,8 @@
-# Exclude everything in .config
-*
+# Exclude everything in the current directory and sub-directories.
+/*
 
-# Except the .gitignore
+# Except the .gitignore.
 !.gitignore
+
+# Except the tmux powerline configs.
+!tmux-powerline

@@ -34,14 +34,18 @@
 !/.tmux/
 !/.tmux/*
 
+# tmux powerline.
+!/.tmux-powerlinerc
+
 # Except fonts stuff (for powerline)
 !/.fonts/
 !/.fonts/*
 !/.fonts.conf.d/
 !/.fonts.conf.d/*
 
-# Except the .config directory for including .config/powerline
+# Except the .config directory
 !/.config/
+!/.config/*
 
 # Except the virtualenv stuff
 !/.virtualenvs/
