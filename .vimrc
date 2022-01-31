@@ -33,10 +33,10 @@ filetype plugin on
 " Enable indentation
 filetype indent on
 
-" Soft tabs with 2 character width
+" Soft tabs with four character width
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 set smarttab
 
 " Always display ruler
