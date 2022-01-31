@@ -3,10 +3,6 @@
 #
 
 if [ -n "$TMUX" ]; then
-    if { hash powerline 2>/dev/null || [ -e $HOME/.local/bin/powerline ] ;}; then
-        export USE_POWERLINE="1"
-        export POWERLINE_ENVS="PWD VIRTUAL_ENV SANDBOX_ID BRANCHNAME FLAVOR"
-    fi
     if [ "$OVERRIDE_CUSTOM_PROMPT" != "1" ]; then
         export PS1="\[\033[0;33m\]\w\[\033[0m\]\n\$ "
     fi

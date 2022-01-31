@@ -8,10 +8,6 @@ eval $(ssh-agent -s) >/dev/null
 store_tmux_envs() {
     if [ -n "$TMUX" -a -n "$TMUX_PANE" ]; then
         local tmux_pane=$(tmux display-message -pt $TMUX_PANE '#{session_name}_#{window_index}_#{pane_index}')
-        for env_var in $POWERLINE_ENVS; do
-            eval local env_var_value='$'$(echo $env_var)
-            tmux set-environment POWERLINE_"$tmux_pane"_"$env_var" "$env_var_value"
-        done
 
         # Refresh the tmux client status bar
         # This could fail if there is no open client, but a command is

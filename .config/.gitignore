@@ -4,9 +4,6 @@
 # Except the .gitignore
 !.gitignore
 
-# Except the powerline stuff
-!powerline
-
 # Except the ipython config file
 !ipython/
 !ipython/profile_default
