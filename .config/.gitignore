@@ -3,9 +3,3 @@
 
 # Except the .gitignore
 !.gitignore
-
-# Except the ipython config file
-!ipython/
-!ipython/profile_default
-!ipython/profile_default/ipython_config.py
-!ipython/profile_default/ipython_config_default.py
