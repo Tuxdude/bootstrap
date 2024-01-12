@@ -26,14 +26,14 @@ vim_plugins_config_update() {
 }
 
 vim_plugins_get_repos() {
-    if [ -n "$VIM_PLUGINS_USE_HTTPS_URLS" ]; then
+    if [ -n "$ADDON_GIT_REPOS_USE_HTTPS_URLS" ]; then
         cat ~/.vim/pluginlist.config | sed 's/github:/https:\/\/github.com\//g'
     else
         cat ~/.vim/pluginlist.config
     fi
 }
 
-# Download/Update all the vim plugins
+# Download/Update all the vim plugins.
 vim_plugins_update() {
     mkdir -p $VIM_PLUGINS_DIR
     for repo in $(vim_plugins_get_repos); do
@@ -104,7 +104,7 @@ vim_plugins_install_tern() {
 }
 
 # Use the config file to setup the plugins, the symlinks and any additional
-# installation if required
+# installation if required.
 vim_plugins_setup() {
     vim_plugins_update && vim_plugins_sync_symlinks && vim_plugins_install_tern
 }
