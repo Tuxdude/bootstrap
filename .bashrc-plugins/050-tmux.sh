@@ -91,3 +91,55 @@ tmux_start_dev_station() {
         tmux_with_ssh_auth_sock "$ssh_auth_sock_updated" -2 attach-session -t "$session_name"
     fi
 }
+
+# This is the location where the tmux powerline repository will be checked out.
+export TMUX_POWERLINE_DIR="/data/dev-stuff/git-repos/tmux-powerline"
+
+# The URI of the tmux powerline repository.
+export TMUX_POWERLINE_REPO="github:Tuxdude/tmux-powerline"
+
+export TMUX_POWERLINE_BASE_DIR="$(dirname $TMUX_POWERLINE_DIR)"
+
+# List the git repository URLs, for the tmux powerline repositories.
+tmux_powerline_list_repo_urls() {
+    git -C "$TMUX_POWERLINE_DIR" config remote.origin.url
+}
+
+tmux_powerline_get_repos() {
+    if [ -n "$ADDON_GIT_REPOS_USE_HTTPS_URLS" ]; then
+        echo "$TMUX_POWERLINE_REPO" | sed 's/github:/https:\/\/github.com\//g'
+    else
+        echo "$TMUX_POWERLINE_REPO"
+    fi
+}
+
+# Download/Update all the tmux powerline.
+tmux_powerline_update() {
+    mkdir -p $(dirname $TMUX_POWERLINE_BASE_DIR)
+    for repo in $(tmux_powerline_get_repos); do
+        repoDirName="$(basename $repo)"
+        repoFullPath="$TMUX_POWERLINE_BASE_DIR/$repoDirName"
+        if [ -d "$repoFullPath" ]; then
+            # If the directory already exists, update it
+            echo "Trying to update $repo"
+            git fetch-and-rebase "$repoFullPath"
+        else
+            # Else do a fresh clone
+            echo "Installing $repo"
+            git clone "$repo" "$repoFullPath"
+        fi
+    done
+}
+
+# Create/update the symlinks.
+tmux_powerline_sync_symlinks() {
+    mkdir -p ~/.local/bin
+    echo "Symlinking $TMUX_POWERLINE_DIR/$powerline.sh -> ~/.local/bin/tmux-powerline"
+    ln -sf "$TMUX_POWERLINE_DIR/powerline.sh" ~/.local/bin/tmux-powerline
+}
+
+# Use the config file to setup the tmux powerline repositories, the symlinks and any additional
+# installation if required.
+tmux_powerline_setup() {
+    tmux_powerline_sync_symlinks && tmux_powerline_update
+}
