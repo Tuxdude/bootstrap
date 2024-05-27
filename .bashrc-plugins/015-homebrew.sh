@@ -27,10 +27,14 @@ if [ -n "$homebrew_home" ]; then
     if [[ $OSTYPE == darwin* ]]; then
         coreutils_bin="$homebrew_home/opt/coreutils/libexec/gnubin"
         coreutils_man="$homebrew_home/opt/coreutils/libexec/gnuman"
-        export PATH=$coreutils_bin:$(path_remove "$PATH" "$coreutils_bin")
-        export MANPATH=$coreutils_man:$(path_remove "$MANPATH" "$coreutils_man")
+        gnutar_bin="$homebrew_home/opt/gnu-tar/libexec/gnubin"
+        gnutar_man="$homebrew_home/opt/gnu-tar/libexec/gnuman"
+        export PATH=$coreutils_bin:$gnutar_bin:$(path_remove "$PATH" "$coreutils_bin" "$gnutar_bin")
+        export MANPATH=$coreutils_man:$gnutar_man:$(path_remove "$MANPATH" "$coreutils_man" "$gnutar_man")
         unset coreutils_bin
         unset coreutils_man
+        unset gnutar_bin
+        unset gnutar_man
     fi
 
     unset homebrew_home homebrew_bin
