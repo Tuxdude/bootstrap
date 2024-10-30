@@ -37,4 +37,7 @@ if hash brew 2> /dev/null; then
 
     # Bash completion for nvm
     source $NVM_DIR/etc/bash_completion.d/nvm
+else
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 fi
