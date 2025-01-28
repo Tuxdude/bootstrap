@@ -29,7 +29,10 @@ alias xauthfix='xauth extract - :`echo $DISPLAY |awk -F: "{print $2}"` | sudo su
 alias tmux='tmux -2'
 alias picocom='picocom -b 115200'
 alias hd='od -Ax -tx1z -v'
+alias cpresume='rsync --partial --progress --archive --human-readable --compress --verbose'
+alias cpresumesudo='sudo rsync --partial --progress --archive --human-readable --compress --rsync-path="sudo rsync" --verbose'
 alias scpresume='rsync --partial --progress --archive --human-readable --compress --rsh=ssh --verbose'
+alias scpresumesudo='sudo rsync --partial --progress --archive --human-readable --compress --rsh=ssh --rsync-path="sudo rsync" --verbose'
 alias diff='colordiff'
 alias profilevim='vim --cmd "profile start profile.log" --cmd "profile func *" --cmd "profile file *" -c "profdel func *" -c "profdel file *" -c "qa!"'
 
