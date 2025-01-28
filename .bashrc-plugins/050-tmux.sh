@@ -60,35 +60,37 @@ tmux_start_dev_station() {
         # Window 0
         tmux_create_4_pane_window "$session_name" 1 $ssh_auth_sock_updated
 
-        # Window 1
-        tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
+        if [ "${LITE_HOST}" -ne 1 ]; then
+            # Window 1
+            tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
 
-        # Window 2
-        tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
+            # Window 2
+            tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
 
-        # Window 3
-        tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
+            # Window 3
+            tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
 
-        # Window 4
-        tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
+            # Window 4
+            tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
 
-        # Window 5
-        tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
+            # Window 5
+            tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
 
-        # Window 6
-        tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
+            # Window 6
+            tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
 
-        # Window 7
-        tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
+            # Window 7
+            tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
 
-        # Window 8
-        tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
+            # Window 8
+            tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
 
-        # Select Window 0
-        tmux_with_ssh_auth_sock "$ssh_auth_sock_updated" select-window -t "$session_name":0
+            # Select Window 0
+            tmux_with_ssh_auth_sock "$ssh_auth_sock_updated" select-window -t "$session_name":0
 
-        # Attach the sesssion
-        tmux_with_ssh_auth_sock "$ssh_auth_sock_updated" -2 attach-session -t "$session_name"
+            # Attach the sesssion
+            tmux_with_ssh_auth_sock "$ssh_auth_sock_updated" -2 attach-session -t "$session_name"
+        fi
     fi
 }
 
