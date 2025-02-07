@@ -60,7 +60,7 @@ tmux_start_dev_station() {
         # Window 0
         tmux_create_4_pane_window "$session_name" 1 $ssh_auth_sock_updated
 
-        if [ "${LITE_HOST}" -ne 1 ]; then
+        if [[ "${LITE_HOST}" != "1" ]]; then
             # Window 1
             tmux_create_4_pane_window "$session_name" 0 $ssh_auth_sock_updated
 
